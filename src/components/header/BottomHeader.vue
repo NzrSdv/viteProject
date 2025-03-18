@@ -10,16 +10,16 @@
           </div>
         </li>
         <li>
-          <a href="#"> Каталог товаров</a>
+          <router-link to="/catalog">Каталог товаров</router-link>
         </li>
         <li>
-          <a href="#"> Акции</a>
+          <router-link to="/">Акции</router-link>
         </li>
         <li>
-          <a href="#"> О нас</a>
+          <router-link to="/">О нас</router-link>
         </li>
         <li>
-          <a href="#">Контакты </a>
+          <router-link to="/">Контакты </router-link>
         </li>
       </ul>
     </nav>
@@ -36,6 +36,7 @@ export default {};
   align-items: center;
   justify-content: flex-start;
 }
+
 .nav ul {
   display: flex;
   align-items: center;
@@ -50,18 +51,25 @@ export default {};
   line-height: 22px;
   letter-spacing: 0%;
 }
-.burger--menu{
-    width: 21px;
-    aspect-ratio: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: space-between;
+.burger--menu {
+  width: 21px;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
 }
-.burger--menu .line{
-    width: 100%;
-    height:3px;
-    background: black;
+.burger--menu .line {
+  width: 100%;
+  height: 3px;
+  background: black;
 }
 
+@media (max-width: 768px) {
+  .nav ul {
+    flex-direction: column;
+    background-color: var(--color-block);
+    display: none;
+  }
+}
 </style>

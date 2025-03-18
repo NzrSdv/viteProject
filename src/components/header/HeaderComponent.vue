@@ -9,6 +9,7 @@ import UpperHeader from './UpperHeader.vue';
     <div class="container">
       <UpperHeader/>
       <BottomHeader/>
+
     </div>
   </header>
 </template>
