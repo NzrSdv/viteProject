@@ -1,5 +1,7 @@
 <script setup>
+import FifthSectionComponent from "./FifthSectionComponent.vue";
 import FirstSectionComponent from "./FirstSectionComponent.vue";
+import FourthSectionComponent from "./FourthSectionComponent.vue";
 import SecondSectionComponent from "./SecondSectionComponent.vue";
 import ThirdSectionComponent from "./ThirdSectionComponent.vue";
 </script>
@@ -8,6 +10,8 @@ import ThirdSectionComponent from "./ThirdSectionComponent.vue";
     <FirstSectionComponent />
     <SecondSectionComponent />
     <ThirdSectionComponent />
+    <FourthSectionComponent/>
+    <FifthSectionComponent/>
   </main>
 </template>
 
@@ -17,6 +21,8 @@ export default {
     FirstSectionComponent,
     SecondSectionComponent,
     ThirdSectionComponent,
+    FourthSectionComponent,
+    FifthSectionComponent
   },
 };
 </script>
@@ -24,10 +30,8 @@ export default {
 .main {
   margin-top: 45px;
 }
-.section--gap{
-  margin-top: 55px;
-}
 .section--gap .container {
+  margin-top: 55px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

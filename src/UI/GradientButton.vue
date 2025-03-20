@@ -22,18 +22,17 @@ export default {
   color: white;
 
   /* typography */
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-weight: 700;
   font-size: 16px;
   line-height: 100%;
   letter-spacing: 0%;
   text-align: center;
   vertical-align: middle;
-  pointer-events:visible;
-  transition: 1s ;
-
+  pointer-events: visible;
+  transition: 1s ease-in-out;
 }
-.gradient-button:hover{
-  background: linear-gradient(101deg, #d16044,#f35c37);
+.gradient-button:hover {
+  background: linear-gradient(101deg, #d16044, #f35c37);
 }
 </style>
