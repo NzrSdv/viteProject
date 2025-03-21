@@ -1,5 +1,9 @@
 <template>
-  <button @click="clickFunction" class="gradient-button">
+  <button
+    @click="clickFunction"
+    class="gradient-button"
+    :style="{ width: width }"
+  >
     {{ text }}
   </button>
 </template>
@@ -10,15 +14,19 @@ export default {
   props: {
     text: String,
     clickFunction: Function,
+    width: String,
   },
 };
 </script>
 <style scoped>
 .gradient-button {
+  height: 47px;
   border-radius: 5px;
   background: #f35c37;
   background: linear-gradient(101deg, #f35c37, #f88d3d);
-  padding: 18px 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
 
   /* typography */

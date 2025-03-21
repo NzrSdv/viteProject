@@ -44,9 +44,12 @@ export default {
 .content {
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: flex-end;
+  flex-wrap: nowrap;
+  flex-direction: row;
   padding: 34px 0 16px 32px;
+  gap:0;
 }
 .text {
   display: flex;
@@ -86,7 +89,6 @@ export default {
 }
 
 .round--button:hover {
-    transform: scale(1.1);
   background-color: rgb(237, 237, 237);
 }
 </style>

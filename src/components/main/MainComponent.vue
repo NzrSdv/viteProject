@@ -46,4 +46,12 @@ export default {
   letter-spacing: 0%;
   vertical-align: bottom;
 }
+.content{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  gap:30px;
+}
 </style>

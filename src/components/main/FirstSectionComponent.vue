@@ -16,6 +16,7 @@ import GradientButton from "@/UI/GradientButton.vue";
         <GradientButton
           text="Подробнее"
           :clickFunction="() => console.log('clicked the button gradient')"
+          width="189px"
         />
       </div>
       <div class="right--arrow arrow">></div>
@@ -34,6 +35,7 @@ export default {
 <style scoped>
 .first--section {
   width: 100%;
+  max-height: fit-content;
   position: relative;
 }
 .section--imgs {
@@ -53,8 +55,8 @@ export default {
 
 .section--content {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  height: min(100%,37dvw);
+width: 100%;
   z-index: 3;
   background: linear-gradient(
     90deg,
@@ -121,12 +123,12 @@ export default {
 .front--imgs {
   position: relative;
   width: 100%;
-  height: 78dvh;
+  height: 37dvw;
   background-color: transparent;
   z-index: 2;
 }
 .deliver--img {
-  height: 100%;
+  height: min(100%,37dvw);
   object-fit: cover;
   position: absolute;
   right: min(100px, 7dvw);
@@ -139,5 +141,20 @@ export default {
   .deliver--img {
     display: none;
   }
+  .left{
+    gap:10px;
+  }
+  .title {
+  max-width: 300px;
+    /* typo */
+
+  font-size: 2rem;
+  line-height: 40px;
+
+}
+.sub-title {
+  font-size: 20px;
+  line-height: 25px;
+}
 }
 </style>

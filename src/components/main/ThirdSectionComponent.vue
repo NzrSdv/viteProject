@@ -44,6 +44,8 @@ export default {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap:32px;
+
+  align-items: stretch;
 }
 .section--card {
   border-radius: 20px;
