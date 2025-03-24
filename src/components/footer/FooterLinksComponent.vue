@@ -3,7 +3,7 @@
     <h3 class="links-title">{{ info.title }}</h3>
     <ul class="links">
       <li v-for="(item, index) in info.links" :key="index">
-        <a :href="item.link">{{ item.name }}</a>
+        <router-link :to="`/catalog/${item.name}`">{{ item.name }}</router-link>
       </li>
     </ul>
   </div>
@@ -41,7 +41,7 @@ ul.links {
   row-gap: 7px;
   flex-wrap: wrap;
 }
-ul li a {
+ul li {
   font-family: 'Raleway';
   font-weight: 500;
   font-size: 14px;

@@ -30,28 +30,5 @@ export default {
 .main {
   margin-top: 45px;
 }
-.section--gap .container {
-  margin-top: 55px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  row-gap: 65px;
-}
-.section--title {
-  font-family: "Raleway";
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 30px;
-  letter-spacing: 0%;
-  vertical-align: bottom;
-}
-.content{
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
-  gap:30px;
-}
+
 </style>

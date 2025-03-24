@@ -1,14 +1,10 @@
 <script setup>
-import MainComponent from '@/components/main/MainComponent.vue';
+import MainComponent from "@/components/main/MainComponent.vue";
 </script>
 <template>
-    <MainComponent/>
+  <MainComponent />
 </template>
 <script>
-export default {
-    
-}
+export default {};
 </script>
-<style>
-    
-</style>
+<style></style>

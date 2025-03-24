@@ -10,7 +10,7 @@
           </div>
         </li>
         <li>
-          <router-link to="/catalog">Каталог товаров</router-link>
+          <router-link to="/catalog/Шкафы (МДФ)">Каталог товаров</router-link>
         </li>
         <li>
           <router-link to="/">Акции</router-link>

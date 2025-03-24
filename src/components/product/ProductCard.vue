@@ -51,6 +51,10 @@ export default {
   height: 220px;
   border-radius: 10px;
   position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  background-position: center;
   border: 1px solid var(--color-bg);
 }
 .card--content {

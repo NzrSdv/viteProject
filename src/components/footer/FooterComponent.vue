@@ -8,7 +8,11 @@ import FooterLinksComponent from "./FooterLinksComponent.vue";
         <h2 class="title">Присоединяйтесь</h2>
       </div>
       <div class="right">
-        <FooterLinksComponent v-for="(item, index) in footerInfo" :key="index" :info="item"/>
+        <FooterLinksComponent
+          v-for="(item, index) in footerInfo"
+          :key="index"
+          :info="item"
+        />
       </div>
     </div>
   </footer>
@@ -22,35 +26,37 @@ export default {
       footerInfo: [
         {
           title: "каталог",
+          linkRoute: { name: "Catalog" },
           links: [
-            { name: "Шкафы (МДФ)", link: "" },
-            { name: "Шкафы (распашные)", link: "" },
-            { name: "Шкафы (купе)", link: "" },
-            { name: "Спальные гарнитуры", link: "" },
-            { name: "Кровати", link: "" },
-            { name: "Диваны", link: "" },
-            { name: "Пуфики", link: "" },
-            { name: "Кухонные гарнитуры", link: "" },
-            { name: "Столы", link: "" },
-            { name: "Прихожие", link: "" },
-            { name: "Комоды", link: "" },
-            { name: "Стеллажи", link: "" },
-            { name: "Б/У", link: "" },
+            { name: "Шкафы (МДФ)" },
+            { name: "Шкафы (распашные)" },
+            { name: "Шкафы (купе)" },
+            { name: "Спальные гарнитуры" },
+            { name: "Кровати" },
+            { name: "Диваны" },
+            { name: "Пуфики" },
+            { name: "Кухонные гарнитуры" },
+            { name: "Столы" },
+            { name: "Прихожие" },
+            { name: "Комоды" },
+            { name: "Стеллажи" },
+            { name: "Б/У" },
           ],
         },
         {
           title: "навигация",
+          linkRoute: { base: "Catalog" },
+
           links: [
-            { name: "О компании", link: "" },
-            { name: "Акции", link: "" },
-            { name: "Доставка и оплата", link: "" },
+            { name: "О компании" },
+            { name: "Акции" },
+            { name: "Доставка и оплата" },
           ],
         },
         {
           title: "контакты",
-          links: [
-            { name: "Cвяжитесь с нами", link: "" },
-          ],
+          linkRoute: { base: "Catalog" },
+          links: [{ name: "Cвяжитесь с нами" }],
         },
       ],
     };
@@ -64,13 +70,13 @@ export default {
   background-color: #141414;
   padding: 34px 57px;
 }
-.footer .container{
-    display: flex;
-    justify-content: flex-start;
-    gap:125px;
-    flex-wrap: wrap;
-    padding-bottom: 38px;
-    border-bottom: 1px solid #FFFFFF1A;
+.footer .container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 125px;
+  flex-wrap: wrap;
+  padding-bottom: 38px;
+  border-bottom: 1px solid #ffffff1a;
 }
 .title {
   color: white;
@@ -80,11 +86,11 @@ export default {
   line-height: 30px;
   letter-spacing: 0%;
 }
-.right{
-    display:flex;
-    gap:60px;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
+.right {
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 </style>
