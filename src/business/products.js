@@ -64,12 +64,15 @@ const templates = [
 ];
 
 let madeProducts = [];
-for (let i = 1; i < 25; i++) {
+let offset = 0;
+for (let i = 0; i < 25; i++) {
   let massive = [];
-  for (let j = 0; j < 15; j++) {
-    massive.push(templates[j % 4]);
-  }
+    for (let j = 0; j < 15; j++) {
+      massive.push(templates[(j+offset) % 4]);
+    }
+    offset++;
   madeProducts.push(massive);
 }
 
+console.log(madeProducts[0],madeProducts[1])
 export default madeProducts;

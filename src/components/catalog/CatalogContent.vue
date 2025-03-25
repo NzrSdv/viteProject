@@ -1,8 +1,6 @@
 <script setup>
-
-
+import PaginationComponent from "./PaginationComponent.vue";
 import ProductCard from "@/components/product/ProductCard.vue";
-
 </script>
 <template>
   <section class="section--gap">
@@ -35,11 +33,16 @@ import ProductCard from "@/components/product/ProductCard.vue";
           </select>
           <div class="cards">
             <ProductCard
-              v-for="(item, index) in products[currentPage]"
+              v-for="(item, index) in currentProducts"
               :key="index"
               :product="item"
             />
           </div>
+          <PaginationComponent
+            @pageChange="pageClick"
+            :pages="products.length"
+            :currentPage="currentPage"
+          />
         </div>
       </div>
     </div>
@@ -50,11 +53,12 @@ import madeProducts from "@/business/products";
 
 export default {
   name: "CatalogContent",
-  components: { ProductCard },
+  components: { ProductCard, PaginationComponent },
   data() {
     return {
-        products:madeProducts,
-        currentPage:0,
+      products: madeProducts,
+      currentPage: 0,
+      currentProducts:[],
       links: [
         { name: "Шкафы (МДФ)" },
         { name: "Шкафы (распашные)" },
@@ -73,7 +77,19 @@ export default {
       current: "",
     };
   },
+  methods: {
+    pageClick(newPage) {
+      console.log(newPage);
+      this.currentPage = newPage;
+      this.currentProducts = this.products[this.currentPage]
+    },
+  },
   created() {
+
+    // current page
+    this.currentProducts = this.products[this.currentPage]
+
+    // current category
     this.current =
       this.$route.params.category.length === 1
         ? this.$route.params.category[0]
@@ -98,14 +114,13 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fill, 290px);
   align-items: flex-start;
-  gap:32px;
+  gap: 32px;
   justify-content: center;
 }
 .product--nav {
   border: 1px solid #e5e5e5;
   border-radius: 10px;
 
-  
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -159,12 +174,12 @@ h4.sub--title {
   background-color: #ffc844;
 }
 .products {
-    grid-column: 2/-1;
+  grid-column: 2/-1;
   display: subgrid;
   flex-direction: column;
   align-items: stretch;
 }
-.cards {  
+.cards {
   display: flex;
   gap: 32px;
   flex-wrap: wrap;

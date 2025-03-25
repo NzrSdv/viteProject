@@ -4,11 +4,23 @@ import CatalogScreen from "@/views/CatalogScreen.vue";
 
 const routes = [
   { path: "/", name: "Home", component: HomeScreen },
-  { path: "/catalog/:category(.*)*", name: "Catalog", component: CatalogScreen },
+  {
+    path: "/catalog/:category(.*)*",
+    name: "Catalog",
+    component: CatalogScreen,
+  },
 ];
 
 const router = createRouter({
-    routes,history:createWebHistory()
-})
+  routes,
+  history: createWebHistory(),
+  scrollBehavior(to,from,savedPosition){
+    if(to.hash){
+      return {
+        el:to.hash
+      }
+    }
+  }
+});
 
 export default router;
