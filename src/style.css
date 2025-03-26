@@ -4,24 +4,37 @@
 /* fonts */
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
+/* tailwind */
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #ffc844;
+  --color-light-4:rgba(234, 234, 234, 1);
+
+  --color-dark-4:rgba(102, 102, 102, 1);
+}
+
 :root {
   --color-block: #fff;
   --color-bg: #f5f5f5;
+  --color-accent: #ffc844;
+  --raleway: "Raleway";
 }
 
 ::-webkit-scrollbar {
   display: none;
 }
-
-* {
-  margin: 0;
-  padding: 0;
-}
-html{
+html {
   /* scroll-behavior: smooth; */
 }
 body {
   background-color: var(--color-block);
+}
+
+@layer base {
+  h1 {
+    font-size: var(--text-3xl);
+  }
 }
 
 .container {

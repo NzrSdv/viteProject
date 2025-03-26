@@ -65,14 +65,25 @@ const templates = [
 
 let madeProducts = [];
 let offset = 0;
+let id = 1;
 for (let i = 0; i < 25; i++) {
   let massive = [];
     for (let j = 0; j < 15; j++) {
-      massive.push(templates[(j+offset) % 4]);
+      massive.push({id:id,...templates[(j+offset) % 4]});
+      id++;
     }
     offset++;
   madeProducts.push(massive);
 }
+function find(id){
+  madeProducts.map(ProductPage => 
+    ProductPage.map(product => {
+      if(product.id === id ){
+        return product;
+      } 
+    })
+  )
+}
 
-console.log(madeProducts[0],madeProducts[1])
+console.log(madeProducts[0])
 export default madeProducts;

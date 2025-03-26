@@ -1,17 +1,19 @@
 <script setup>
-import FifthSectionComponent from "./FifthSectionComponent.vue";
 import FirstSectionComponent from "./FirstSectionComponent.vue";
-import FourthSectionComponent from "./FourthSectionComponent.vue";
-import SecondSectionComponent from "./SecondSectionComponent.vue";
+import ProductsRow from "../product/ProductsRow.vue";
 import ThirdSectionComponent from "./ThirdSectionComponent.vue";
+import FourthSectionComponent from "./FourthSectionComponent.vue";
+import FifthSectionComponent from "./FifthSectionComponent.vue";
+import madeProducts from "../../business/products";
+
 </script>
 <template>
   <main class="main">
     <FirstSectionComponent />
-    <SecondSectionComponent />
+    <ProductsRow title="Популярные товары" :products="madeProducts[0].slice(0,4)" />
     <ThirdSectionComponent />
-    <FourthSectionComponent/>
-    <FifthSectionComponent/>
+    <FourthSectionComponent />
+    <FifthSectionComponent />
   </main>
 </template>
 
@@ -19,10 +21,10 @@ import ThirdSectionComponent from "./ThirdSectionComponent.vue";
 export default {
   components: {
     FirstSectionComponent,
-    SecondSectionComponent,
+    ProductsRow,
     ThirdSectionComponent,
     FourthSectionComponent,
-    FifthSectionComponent
+    FifthSectionComponent,
   },
 };
 </script>
@@ -30,5 +32,4 @@ export default {
 .main {
   margin-top: 45px;
 }
-
 </style>
