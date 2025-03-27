@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeScreen from "@/views/HomeScreen.vue";
 import CatalogScreen from "@/views/CatalogScreen.vue";
 import ProductScreen from "../views/ProductScreen.vue";
+import CartScreen from "../views/CartScreen.vue";
 
 const routes = [
   { path: "/", name: "Home", component: HomeScreen },
@@ -15,6 +16,7 @@ const routes = [
     name: "Product",
     component: ProductScreen,
   },
+  { path: "/cart", name: "Cart", component: CartScreen },
 ];
 
 const router = createRouter({

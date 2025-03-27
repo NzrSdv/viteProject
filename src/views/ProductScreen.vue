@@ -2,6 +2,7 @@
 import madeProducts from "../business/products";
 import AccentButton from "../UI/AccentButton.vue";
 import AccentButtonTwo from "../UI/AccentButtonTwo.vue";
+import ProductsRow from "../components/product/ProductsRow.vue";
 </script>
 
 <template>
@@ -9,8 +10,8 @@ import AccentButtonTwo from "../UI/AccentButtonTwo.vue";
     <section class="section--gap">
       <div class="flex flex-column items-center justify-center">
         <div class="flex flex-row items-start gap-40 ">
-          <div class="w-lg grid gap-4 grid-cols-4 grid-rows-2">
-            <div class="border-2 border-solid border-blue-500 col-span-4">
+          <div class="w-lg grid gap-4 grid-cols-4 grid-rows-5 row-span-1">
+            <div class="border-2 border-solid border-blue-500 col-span-4 row-span-4">
               <img
                 class="h-auto max-w-full"
                 :src="madeProducts[0][($route.params.id - 1) % 4].img"
@@ -79,17 +80,30 @@ import AccentButtonTwo from "../UI/AccentButtonTwo.vue";
     </section>
 
     <section class="section--gap">
-      <div class="container">
-        <h2 class="section--title">
+      <div class="container flex flex-col gap-12">
+        <h2 class="section--title w-full flex flex-col gap-5">
           Подробнее о товаре
+          <div class="h-[1px] w-full bg-light-4"></div>
         </h2>
+        <div class="border border-solid border-light-4 w-full">
+
+          <div class="accordion">
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section--gap">
+      <div class="container">  
+        <ProductsRow line="true" title="Похожие товары" :products="madeProducts[0].slice(0,4)"/>
+        <ProductsRow line="true" title="Вы смотрели" :products="madeProducts[0].slice(0,4)"/>
       </div>
     </section>
   </main>
 </template>
 <script>
 export default {
-  components: { AccentButton, AccentButtonTwo },
+  components: { AccentButton, AccentButtonTwo,ProductsRow },
   created() {
     console.log(this.$route.params.id);
   },

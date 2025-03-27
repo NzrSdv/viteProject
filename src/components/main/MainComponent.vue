@@ -10,7 +10,7 @@ import madeProducts from "../../business/products";
 <template>
   <main class="main">
     <FirstSectionComponent />
-    <ProductsRow title="Популярные товары" :products="madeProducts[0].slice(0,4)" />
+    <ProductsRow line="false" title="Популярные товары" :products="madeProducts[0].slice(0,4)" />
     <ThirdSectionComponent />
     <FourthSectionComponent />
     <FifthSectionComponent />

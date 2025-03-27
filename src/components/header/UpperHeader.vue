@@ -1,6 +1,6 @@
 <template>
   <div class="header--upper">
-    <router-link :to="{name:'Home'}">
+    <router-link :to="{ name: 'Home' }">
       <div class="header--logo">
         <img src="@/assets/Logo_icon.svg" />
         <h2 class="extra-text">Hello</h2>
@@ -15,10 +15,12 @@
         </label>
       </div>
       <div class="business--btn" @click="() => console.log('clicked')">
-        <label>
-          <img src="@/assets/Cart_icon.svg" />
-          <h2 class="extra-text">Корзина</h2>
-        </label>
+        <router-link to="/cart">
+          <label>
+            <img src="@/assets/Cart_icon.svg" />
+            <h2 class="extra-text">Корзина</h2>
+          </label>
+        </router-link>
       </div>
     </div>
   </div>

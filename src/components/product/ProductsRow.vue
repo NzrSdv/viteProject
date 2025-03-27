@@ -5,7 +5,10 @@ import LineDivision from "@/UI/LineDivision.vue";
 <template>
   <section class="section--gap">
     <div class="container">
-      <h2 class="section--title">{{ title }}</h2>
+      <h2 class="section--title flex flex-col gap-5 w-full">
+        {{ title }}
+        <div v-if="line" class="w-full h-[1px] bg-light-4"></div>
+      </h2>
       <div class="content">
         <ProductCard
           v-for="(item, index) in products"
@@ -18,13 +21,13 @@ import LineDivision from "@/UI/LineDivision.vue";
   </section>
 </template>
 <script>
-
 export default {
   name: "ProductsRow",
   components: { ProductCard, LineDivision },
-  props:{
-    title:String,
-    products:Array
+  props: {
+    line: Boolean,
+    title: String,
+    products: Array,
   },
 };
 </script>
@@ -32,5 +35,4 @@ export default {
 section {
   margin-top: 45px;
 }
-
 </style>
