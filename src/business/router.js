@@ -3,6 +3,7 @@ import HomeScreen from "@/views/HomeScreen.vue";
 import CatalogScreen from "@/views/CatalogScreen.vue";
 import ProductScreen from "../views/ProductScreen.vue";
 import CartScreen from "../views/CartScreen.vue";
+import OrderScreen from "../views/OrderScreen.vue";
 
 const routes = [
   { path: "/", name: "Home", component: HomeScreen },
@@ -17,6 +18,7 @@ const routes = [
     component: ProductScreen,
   },
   { path: "/cart", name: "Cart", component: CartScreen },
+  {path:"/order/:id", name:"Order", component: OrderScreen}
 ];
 
 const router = createRouter({

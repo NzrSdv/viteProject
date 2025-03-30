@@ -10,10 +10,10 @@ const templates = [
     img: Wardrobe_1,
     price: {
       oldPrice: {
-        value: "25 000",
+        value: "25 000₸",
       },
       currentPrice: {
-        value: "15 000",
+        value: "15 000₸",
       },
     },
     emphasis: {
@@ -27,7 +27,7 @@ const templates = [
     img: Wardrobe_2,
     price: {
       currentPrice: {
-        value: "15 000",
+        value: "15 000₸",
       },
     },
     emphasis: {
@@ -40,7 +40,7 @@ const templates = [
     img: Wardrobe_3,
     price: {
       currentPrice: {
-        value: "15 000",
+        value: "15 000₸",
       },
     },
   },
@@ -50,10 +50,10 @@ const templates = [
     img: Wardrobe_4,
     price: {
       oldPrice: {
-        value: "25 000",
+        value: "25 000₸",
       },
       currentPrice: {
-        value: "15 000",
+        value: "15 000₸",
       },
     },
     emphasis: {
@@ -74,15 +74,6 @@ for (let i = 0; i < 25; i++) {
     }
     offset++;
   madeProducts.push(massive);
-}
-function find(id){
-  madeProducts.map(ProductPage => 
-    ProductPage.map(product => {
-      if(product.id === id ){
-        return product;
-      } 
-    })
-  )
 }
 
 console.log(madeProducts[0])

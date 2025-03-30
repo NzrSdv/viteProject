@@ -1,6 +1,7 @@
 <script setup>
 import NeutralButton from "../UI/NeutralButton.vue";
 import Delete from "../assets/delete_icon (2).svg";
+
 </script>
 
 <template>
@@ -20,14 +21,16 @@ import Delete from "../assets/delete_icon (2).svg";
             <h5 class="font-[Raleway] font-normal text-[9px] text-dark-5">
               Код Товара: Fn-0026
             </h5>
-            <h3 class="font-[Inter] font-normal text-normal/5">
-              {{ cartProduct.price.currentPrice.value }} ₸
+            <h3  class="font-[Inter] font-normal text-normal/5">
+              {{ cartProduct.price.currentPrice.value }}
             </h3>
-            <h4 class="line-through text-light-5 font-[Inter] text-[10px]">
-              {{ cartProduct.price.oldPrice.value }} ₸
+            <h4 v-if="cartProduct.price.oldPrice != undefined" class="line-through text-light-5 font-[Inter] text-[10px]">
+              {{ cartProduct.price.oldPrice?.value }} 
             </h4>
           </div>
-          <NeutralButton text="Оформить заказ" />
+         <router-link :to="`/order/${cartProduct.id}`">
+           <NeutralButton text="Оформить заказ" />
+         </router-link>
         </div>
       </div>
       <div class="right">

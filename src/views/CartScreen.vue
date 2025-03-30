@@ -1,5 +1,5 @@
 <script setup>
-import madeProducts from '../business/products';
+import madeProducts from "../business/products";
 
 import CartCardComponent from "../cart/CartCardComponent.vue";
 </script>
@@ -8,10 +8,8 @@ import CartCardComponent from "../cart/CartCardComponent.vue";
   <main class="main">
     <section class="section--gap">
       <div class="container flex flex-col">
-        <div class="flex w-full flex-col">
-          <div v-for="(prod,index) in cart" :key="index" >
-            <CartCardComponent :cartProduct="prod"/>
-          </div>
+        <div class="flex w-full flex-col" v-for="(item, index) in cart" :key="index">
+          <CartCardComponent :line="true" :cartProduct="item"/>
         </div>
       </div>
     </section>
@@ -22,9 +20,14 @@ export default {
   components: { CartCardComponent },
   data() {
     return {
-      cart: madeProducts[0].slice(0,4),
+      cart: [],
     };
   },
+  created(){
+    for(let i = 0; i < 4 ; i++){
+      this.cart.push(madeProducts[0][i])
+    }
+  }
 };
 </script>
 <style scoped></style>

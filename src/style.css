@@ -3,20 +3,38 @@
 
 /* fonts */
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 /* tailwind */
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @theme {
+  --color-gradient-1: rgba(243, 92, 55, 1);
+  --color-gradient-2: rgba(248, 141, 61, 1);
+
   --color-accent: #ffc844;
   --color-light-3: rgba(245, 245, 245, 1);
+  --color-light-35: rgba(239, 239, 239, 1);
   --color-light-4: rgba(234, 234, 234, 1);
+  --color-light-44: rgba(228, 228, 231, 1);
   --color-light-45: rgba(207, 207, 207, 1);
+  --color-light-46: rgba(165, 165, 165, 1);
   --color-light-5: rgba(153, 153, 153, 1);
   --color-dark-5: rgba(124, 124, 124, 1);
+  --color-dark-45: rgba(113, 113, 122, 1);
   --color-dark-4: rgba(102, 102, 102, 1);
   --color-dark-2: rgba(55, 65, 81, 1);
+  --color-dark-1: rgba(24, 24, 27, 1);
+  --color-dark-05: rgba(21, 21, 21, 1);
+
+  --color-transparent-border:rgba(0,0,0,0.2);
+}
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 
 :root {

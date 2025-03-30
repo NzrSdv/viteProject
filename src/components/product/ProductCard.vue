@@ -22,9 +22,9 @@ import NewMarker from "@/UI/NewMarker.vue";
         </div>
         <div class="price">
           <h3 class="oldPrice" v-if="product.price?.oldPrice">
-            {{ product.price.oldPrice.value }}₸
+            {{ product.price.oldPrice.value }}
           </h3>
-          <h3 class="currentPrice">{{ product.price.currentPrice.value }}₸</h3>
+          <h3 class="currentPrice">{{ product.price.currentPrice.value }}</h3>
         </div>
       </div>
     </div>

@@ -10,7 +10,6 @@ export default {
   name: "NeutralButton",
   props: {
     text: String,
-    click: Function,
   },
 };
 </script>
