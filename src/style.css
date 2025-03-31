@@ -7,17 +7,22 @@
 /* tailwind */
 @import "tailwindcss";
 @import "tw-animate-css";
+@tailwind components;
+@tailwind utilities;
 
 @theme {
   --color-gradient-1: rgba(243, 92, 55, 1);
   --color-gradient-2: rgba(248, 141, 61, 1);
 
   --color-accent: #ffc844;
+
   --color-light-3: rgba(245, 245, 245, 1);
   --color-light-35: rgba(239, 239, 239, 1);
   --color-light-4: rgba(234, 234, 234, 1);
   --color-light-44: rgba(228, 228, 231, 1);
+  --color-light-445: rgba(212, 212, 212, 1);
   --color-light-45: rgba(207, 207, 207, 1);
+  --color-light-455: rgba(181, 181, 181, 1);
   --color-light-46: rgba(165, 165, 165, 1);
   --color-light-5: rgba(153, 153, 153, 1);
   --color-dark-5: rgba(124, 124, 124, 1);
@@ -27,7 +32,10 @@
   --color-dark-1: rgba(24, 24, 27, 1);
   --color-dark-05: rgba(21, 21, 21, 1);
 
-  --color-transparent-border:rgba(0,0,0,0.2);
+  --color-footer-bg: rgba(20, 20, 20, 1);
+  
+  --color-transparent-border-1: rgba(255, 255, 255, 0.1);
+  --color-transparent-border: rgba(0, 0, 0, 0.2);
 }
 @layer base {
   input[type="number"]::-webkit-inner-spin-button,
@@ -55,17 +63,19 @@ body {
 }
 
 .container {
-  width: 100%;
-  padding: 0 57px;
+  /* width: 100%;
+  padding: 0 57px; */
+  @apply mx-14 w-full;
 }
 
 .section--gap .container {
-  margin-top: 55px;
+  /* margin-top: 55px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  row-gap: 65px;
+  row-gap: 65px; */
+  @apply mt-16 flex flex-col items-start justify-start gap-16;
 }
 .section--title {
   font-family: "Raleway";
@@ -82,10 +92,4 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 30px;
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 0 20px;
-  }
 }

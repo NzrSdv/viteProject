@@ -2,8 +2,10 @@
 import FooterLinksComponent from "./FooterLinksComponent.vue";
 </script>
 <template>
-  <footer class="footer">
-    <div class="container">
+  <footer class="footer mt-25 min-h-85 bg-footer-bg">
+    <div
+      class="container flex justify-start gap-31 flex-wrap pb-9 border-b border-solid border-transparent-border-1"
+    >
       <div class="left">
         <h2 class="title">Присоединяйтесь</h2>
       </div>

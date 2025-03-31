@@ -5,11 +5,10 @@ import UpperHeader from './UpperHeader.vue';
 
 </script>
 <template>
-  <header class="header">
-    <div class="container">
+  <header class="flex justify-stretch h-29 bg-white pt-4 shadow-md ">
+    <div class="container w-full flex flex-col gap-3">
       <UpperHeader/>
       <BottomHeader/>
-
     </div>
   </header>
 </template>
@@ -19,20 +18,4 @@ export default {
 };
 </script>
 <style scoped>
-.header {
-  display: flex;
-  justify-content: space-between;
-  height: 115px;
-  background-color: var(--color-block);
-  padding-top: 15px;
-  box-shadow: 0px 0px 5px rgba(0,0,0,.2);
-}
-.header .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 14px;
-}
-
-
 </style>

@@ -3,66 +3,53 @@ import madeProducts from "../business/products";
 import AccentButton from "../UI/AccentButton.vue";
 import AccentButtonTwo from "../UI/AccentButtonTwo.vue";
 import ProductsRow from "../components/product/ProductsRow.vue";
+import { useStore } from "vuex";
+const store = useStore();
 </script>
 
 <template>
   <main class="main">
     <section class="section--gap">
       <div class="flex flex-column items-center justify-center">
-        <div class="flex flex-row items-start gap-40 ">
+        <div class="flex flex-row items-start gap-40">
           <div class="w-lg grid gap-4 grid-cols-4 grid-rows-5 row-span-1">
-            <div class="border-2 border-solid border-blue-500 col-span-4 row-span-4">
-              <img
-                class="h-auto max-w-full"
-                :src="madeProducts[0][($route.params.id - 1) % 4].img"
-                alt=""
-              />
+            <div
+              class="border-2 border-solid border-blue-500 col-span-4 row-span-4"
+            >
+              <img class="h-auto max-w-full" :src="product.img" alt="" />
             </div>
             <div class="flex flex-row gap-4 col-span-4">
               <div class="w-1/4">
-                <img
-                  class="h-auto max-w-full"
-                  :src="madeProducts[0][($route.params.id - 1) % 4].img"
-                  alt=""
-                />
+                <img class="h-auto max-w-full" :src="product.img" alt="" />
               </div>
               <div class="w-1/4">
-                <img
-                  class="h-auto max-w-full"
-                  :src="madeProducts[0][($route.params.id - 1) % 4].img"
-                  alt=""
-                />
+                <img class="h-auto max-w-full" :src="product.img" alt="" />
               </div>
               <div class="w-1/4">
-                <img
-                  class="h-auto max-w-full"
-                  :src="madeProducts[0][($route.params.id - 1) % 4].img"
-                  alt=""
-                />
+                <img class="h-auto max-w-full" :src="product.img" alt="" />
               </div>
               <div class="w-1/4">
-                <img
-                  class="h-auto max-w-full"
-                  :src="madeProducts[0][($route.params.id - 1) % 4].img"
-                  alt=""
-                />
+                <img class="h-auto max-w-full" :src="product.img" alt="" />
               </div>
             </div>
           </div>
           <div class="flex flex-col justify-start gap-13 max-w-md pt-9">
             <div class="flex flex-col gap-9">
               <div class="flex flex-col gap-4">
-              <h1 class="title">Комфорт 4 дуб сонома белый без ящика</h1>
-              <h5 class="sub-title">Код Товара: Fn-0026</h5>
-            </div>
-            <div class="flex flex-col gap-5">
-              <h3 class="price">755 000 ₸</h3>
-              <h4 class="oldPrice">825 000 ₸</h4>
-              <div class="flex flex-row gap-6">
-                <AccentButton text="В корзину" />
-                <AccentButtonTwo text="Купить в 1 клик" />
+                <h1 class="title">{{product.name}}</h1>
+                <h5 class="sub-title">Код Товара: {{product.code}}</h5>
               </div>
-            </div>
+              <div class="flex flex-col gap-5">
+                <h3 class="price">{{product.price.currentPrice.value}}</h3>
+                <h4 class="oldPrice">{{product.price.oldPrice?.value}}</h4>
+                <div class="flex flex-row gap-6">
+                  <AccentButton
+                    text="В корзину"
+                    @click="() => store.commit('addCart', {...product,quantity:1})"
+                  />
+                  <AccentButtonTwo text="Купить в 1 клик" />
+                </div>
+              </div>
             </div>
             <div class="flex flex-col gap-5">
               <h3 class="font-[Raleway] text-base/6 uppercase font-bold">
@@ -86,26 +73,41 @@ import ProductsRow from "../components/product/ProductsRow.vue";
           <div class="h-[1px] w-full bg-light-4"></div>
         </h2>
         <div class="border border-solid border-light-4 w-full">
-
-          <div class="accordion">
-
-          </div>
+          <div class="accordion"></div>
         </div>
       </div>
     </section>
     <section class="section--gap">
-      <div class="container">  
-        <ProductsRow line="true" title="Похожие товары" :products="madeProducts[0].slice(0,4)"/>
-        <ProductsRow line="true" title="Вы смотрели" :products="madeProducts[0].slice(0,4)"/>
+      <div class="container">
+        <ProductsRow
+          line="true"
+          title="Похожие товары"
+          :products="madeProducts[0].slice(0, 4)"
+        />
+        <ProductsRow
+          line="true"
+          title="Вы смотрели"
+          :products="madeProducts[0].slice(0, 4)"
+        />
       </div>
     </section>
   </main>
 </template>
 <script>
 export default {
-  components: { AccentButton, AccentButtonTwo,ProductsRow },
+  components: { AccentButton, AccentButtonTwo, ProductsRow },
+  data() {
+    return {
+      product: {},
+    };
+  },
   created() {
-    console.log(this.$route.params.id);
+    this.product = madeProducts
+      .flat()
+      .filter((element, index) => index == this.$route.params.id - 1)[0];
+      console.log(madeProducts
+      .flat()
+      .filter((element, index) => index == this.$route.params.id - 1))
   },
 };
 </script>

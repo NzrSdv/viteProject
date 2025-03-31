@@ -1,24 +1,29 @@
 <template>
-  <div class="header--upper">
+  <div class="w-full flex flex-row justify-between items-center">
     <router-link :to="{ name: 'Home' }">
-      <div class="header--logo">
+      <div
+        class="flex items-center justify-center gap-8 font-semibold text-2xl"
+      >
         <img src="@/assets/Logo_icon.svg" />
-        <h2 class="extra-text">Hello</h2>
+        <h2 class="md:block hidden">Hello</h2>
       </div>
     </router-link>
-    <div class="header--business">
-      <div class="business--btn">
-        <label
+    <div class="flex justify-end gap-7 font-[Lato] font-medium font-xs uppercase">
+      <div class="w-1/2 text-light-455 flex items-center justify-center">
+        <label class="flex flex-row gap-2"
           ><img src="@/assets/Search_icon.svg" />
-          <h2 class="extra-text">Поиск</h2>
+          <h2 class="md:block hidden">Поиск</h2>
           <!-- <input placeholder="" v-model="searchInput" /> -->
         </label>
       </div>
-      <div class="business--btn" @click="() => console.log('clicked')">
+      <div
+        class="w-1/2 text-light-455 flex g-2 items-center justify-center"
+        @click="() => console.log('clicked')"
+      >
         <router-link to="/cart">
-          <label>
+          <label class="flex flex-row gap-2">
             <img src="@/assets/Cart_icon.svg" />
-            <h2 class="extra-text">Корзина</h2>
+            <h2 class="md:block hidden">Корзина</h2>
           </label>
         </router-link>
       </div>
@@ -34,50 +39,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.header--upper {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.header--logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 33px;
-  font-weight: 600;
-  font-size: 26px;
-}
-.header--business {
-  display: flex;
-  justify-content: flex-end;
-  gap: 27px;
-}
-.business--btn,
-.business--btn label {
-  width: 1fr;
-  color: #b5b5b5;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  vertical-align: center;
-}
-.business--btn input,
-.business--btn input::placeholder,
-label {
-  /* typography */
-  font-family: "Lato";
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  text-transform: uppercase;
-}
-
-@media (max-width: 768px) {
-  .extra-text {
-    display: none;
-  }
-}
-</style>

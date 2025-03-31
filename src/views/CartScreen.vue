@@ -1,15 +1,21 @@
 <script setup>
-import madeProducts from "../business/products";
-
-import CartCardComponent from "../cart/CartCardComponent.vue";
+import CartCardComponent from "@/components/cart/CartCardComponent.vue";
+import { computed } from "vue";
+import { useStore } from "vuex";
+const store = useStore();
+const cartStore = computed(() => store.state.cart);
 </script>
 
 <template>
   <main class="main">
     <section class="section--gap">
       <div class="container flex flex-col">
-        <div class="flex w-full flex-col" v-for="(item, index) in cart" :key="index">
-          <CartCardComponent :line="true" :cartProduct="item"/>
+        <div
+          class="flex w-full flex-col"
+          v-for="(item, index) in cart"
+          :key="index"
+        >
+          <CartCardComponent :line="true" :cartProduct="item" />
         </div>
       </div>
     </section>
@@ -23,11 +29,11 @@ export default {
       cart: [],
     };
   },
-  created(){
-    for(let i = 0; i < 4 ; i++){
-      this.cart.push(madeProducts[0][i])
-    }
-  }
+  created() {
+    const store = useStore();
+    this.cart = computed(() => store.state.cart);
+    console.log(this.cart);
+  },
 };
 </script>
 <style scoped></style>
