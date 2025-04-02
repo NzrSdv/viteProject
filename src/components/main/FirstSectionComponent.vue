@@ -1,25 +1,27 @@
 <script setup>
 import GradientButton from "@/UI/GradientButton.vue";
 import HomePhoto from "@/assets/photos/Home_photo.png";
-import DelivererPhoto from "@/assets/photos/Deliverer_photo.png"
+import DelivererPhoto from "@/assets/photos/Deliverer_photo.png";
 </script>
 <template>
-  <section class="w-full min-h-100 relative overflow-hidden">
-    <div class="absolute z-10 bottom-0 top-0 left-0 right-0">
-      <img
-        class="w-full min-h-100 object-cover"
-        :src="HomePhoto"
-        alt=""
-      />
+  <section class="w-full min-h-120 relative overflow-hidden">
+    <div class="w-full h-full absolute z-10">
+      <img class="w-full min-h-120 object-cover" :src="HomePhoto" alt="" />
     </div>
     <div
-      class="w-full h-full absolute z-30 text-white bg-linear-[90deg,rgba(0,0,0,0.3)_30%,rgba(255,255,255,0)_100%] flex items-center md:justify-start gap-5"
+      class="w-full h-full absolute z-30 text-white bg-linear-[90deg,rgba(0,0,0,0.3)_30%,rgba(255,255,255,0)_100%] flex items-center justify-center md:justify-start gap-5"
     >
-      <div class="left--arrow arrow hidden"><</div>
-      <div class="w-xl h-full flex flex-col items-start justify-start mt-none md:mt-9 gap-6">
-        <div class="flex flex-col items-start justify-start gap-9">
-          <h2 class="font-[Raleway] font-bold text-4xl/7 md:text-6xl/15">Полная обстановка за один день!</h2>
-          <h4 class="max-w-85 font-[Raleway] font-normal text-3xl/8">Гарантируем качество и долговечность.</h4>
+      <div class="w-5 md:w-25 h-full flex items-center justify-center duration-200 hover:bg-[rgba(0,0,0,0.2)] absolute hidden lg:flex"><</div>
+      <div
+        class="lg:w-xl w-full h-full flex flex-col items-center lg:items-start justify-center lg:justify-start mt-none md:mt-9 gap-6 px-2 lg:px-none"
+      >
+        <div class="flex flex-col items-center text-center lg:text-start lg:items-start justify-start gap-9">
+          <h2 class="lg:max-w-140 font-[Raleway] font-bold md:text-6xl/15 text-3xl/9">
+            Полная обстановка за один день!
+          </h2>
+          <h4 class="md:max-w-85 font-[Raleway]  font-normal text-xl/6">
+            Гарантируем качество и долговечность.
+          </h4>
         </div>
         <GradientButton
           text="Подробнее"
@@ -27,10 +29,12 @@ import DelivererPhoto from "@/assets/photos/Deliverer_photo.png"
           width="189px"
         />
       </div>
-      <div class="right--arrow arrow">></div>
+      <div class="w-5 md:w-25 h-full flex items-center justify-center duration-200 hover:bg-[rgba(0,0,0,0.2)] absolute right-0 hidden lg:flex ">></div>
     </div>
-    <div class="front--imgs">
-      <img class="deliver--img" :src="DelivererPhoto" />
+    <div
+      class="relative hidden lg:block w-full h-full z-20"
+    >
+      <img class="object-cover absolute hidden lg:block right-0 z-40" :src="DelivererPhoto" />
     </div>
   </section>
 </template>
@@ -77,7 +81,7 @@ export default {
   gap: 20px;
 } */
 
-.left {
+/* .left {
   width: 573px;
   height: 100%;
   display: flex;
@@ -86,7 +90,7 @@ export default {
   justify-content: flex-start;
   margin-top: 35px;
   gap: 23px;
-}
+} */
 .arrow {
   width: 100px;
   height: 100%;
@@ -102,13 +106,13 @@ export default {
   position: absolute;
   right: 0;
 }
-.text {
+/* .text {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   gap: 35px;
-}
+} */
 .title {
   /* typo */
   font-family: "Raleway";
@@ -145,16 +149,12 @@ export default {
   z-index: 4;
 }
 
-@media (max-width: 768px) {
-  .deliver--img {
-    display: none;
-  }
+/* @media (max-width: 768px) {
   .left {
     gap: 10px;
   }
   .title {
     max-width: 300px;
-    /* typo */
 
     font-size: 2rem;
     line-height: 40px;
@@ -163,5 +163,5 @@ export default {
     font-size: 20px;
     line-height: 25px;
   }
-}
+} */
 </style>

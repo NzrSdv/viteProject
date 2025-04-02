@@ -5,8 +5,8 @@ import UpperHeader from './UpperHeader.vue';
 
 </script>
 <template>
-  <header class="flex justify-stretch h-29 bg-white pt-4 shadow-md ">
-    <div class="container w-full flex flex-col gap-3">
+  <header class="flex justify-center h-29 bg-white pt-4 shadow-md ">
+    <div class="container w-full flex flex-col items-stretch gap-3">
       <UpperHeader/>
       <BottomHeader/>
     </div>
