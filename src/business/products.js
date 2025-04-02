@@ -1,7 +1,7 @@
-import Wardrobe_1 from "@/assets/Wardrobe1_photo.png";
-import Wardrobe_2 from "@/assets/Wardrobe2_photo.png";
-import Wardrobe_3 from "@/assets/Wardrobe3_photo.png";
-import Wardrobe_4 from "@/assets/Wardrobe4_photo.png";
+import Wardrobe_1 from "@/assets/photos/Wardrobe1_photo.png";
+import Wardrobe_2 from "@/assets/photos/Wardrobe2_photo.png";
+import Wardrobe_3 from "@/assets/photos/Wardrobe3_photo.png";
+import Wardrobe_4 from "@/assets/photos/Wardrobe4_photo.png";
 
 const templates = [
   {

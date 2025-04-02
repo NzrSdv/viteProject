@@ -1,3 +1,7 @@
+<script setup>
+import LinkArrow_icon from "@/assets/icons/LinkArrow_icon.svg";
+</script>
+
 <template>
   <div class="category-card" :style="{ backgroundImage: `url(${info.img})` }">
     <div class="bg--gradient">
@@ -8,7 +12,7 @@
         </div>
         <router-link :to="info.link" class="round--button">
 
-          <img src="@/assets/LinkArrow_icon.svg" alt="" />
+          <img :src="LinkArrow_icon" alt="" />
 
         </router-link>
       </div>

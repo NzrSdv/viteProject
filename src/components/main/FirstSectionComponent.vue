@@ -1,12 +1,14 @@
 <script setup>
 import GradientButton from "@/UI/GradientButton.vue";
+import HomePhoto from "@/assets/photos/Home_photo.png";
+import DelivererPhoto from "@/assets/photos/Deliverer_photo.png"
 </script>
 <template>
   <section class="w-full min-h-100 relative overflow-hidden">
     <div class="absolute z-10 bottom-0 top-0 left-0 right-0">
       <img
         class="w-full min-h-100 object-cover"
-        src="@/assets/Home_photo.png"
+        :src="HomePhoto"
         alt=""
       />
     </div>
@@ -28,7 +30,7 @@ import GradientButton from "@/UI/GradientButton.vue";
       <div class="right--arrow arrow">></div>
     </div>
     <div class="front--imgs">
-      <img class="deliver--img" src="@/assets/Deliverer_photo.png" />
+      <img class="deliver--img" :src="DelivererPhoto" />
     </div>
   </section>
 </template>

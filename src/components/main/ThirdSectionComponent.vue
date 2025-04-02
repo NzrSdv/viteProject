@@ -52,7 +52,7 @@ export default {
   object-fit: contain;
 }
 .first--card {
-  background: url("@/assets/Chair1_photo.png") no-repeat;
+  background: url("@/assets/photos/Chair1_photo.png") no-repeat;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -113,7 +113,7 @@ export default {
   vertical-align: middle;
 }
 .second--card {
-  background: url("@/assets/Chair2_photo.png") no-repeat;
+  background: url("@/assets/photos/Chair2_photo.png") no-repeat;
   background-position:right ;
   object-fit: cover;
   padding: 53px 0 0 0;

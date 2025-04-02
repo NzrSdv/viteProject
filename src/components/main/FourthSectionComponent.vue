@@ -1,9 +1,9 @@
 <script setup>
 import CategoryCard from "../../UI/CategoryCard.vue";
 
-import Category1 from "@/assets/Category1_photo.png";
-import Category2 from "@/assets/Category2_photo.png";
-import Category3 from "@/assets/Category3_photo.png";
+import Category1 from "@/assets/photos/Category1_photo.png";
+import Category2 from "@/assets/photos/Category2_photo.png";
+import Category3 from "@/assets/photos/Category3_photo.png";
 import LineDivision from "../../UI/LineDivision.vue";
 </script>
 <template>

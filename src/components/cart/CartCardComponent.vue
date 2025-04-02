@@ -1,6 +1,6 @@
 <script setup>
 import NeutralButton from "@/UI/NeutralButton.vue";
-import Delete from "@/assets/delete_icon (2).svg";
+import Delete from "@/assets/icons/delete_icon (2).svg";
 import { useStore } from "vuex";
 const store = useStore();
 

@@ -1,8 +1,8 @@
 <script setup>
 import DeliveryCard from "../../UI/DeliveryCard.vue";
-import Delivery1 from "@/assets/Delivery1_photo.png";
-import Delivery2 from "@/assets/Delivery2_photo.png";
-import Delivery3 from "@/assets/Delivery3_photo.png";
+import Delivery1 from "@/assets/photos/Delivery1_photo.png";
+import Delivery2 from "@/assets/photos/Delivery2_photo.png";
+import Delivery3 from "@/assets/photos/Delivery3_photo.png";
 </script>
 <template>
   <section class="section--gap">
