@@ -1,13 +1,25 @@
 <script setup>
 import FooterLinksComponent from "./FooterLinksComponent.vue";
+import FacebookIcon from "@/assets/icons/facebook_ico.svg";
+import InstagramIcon from "@/assets/icons/instagram_ico.svg";
+import WhatsappIcon from "@/assets/icons/whatsapp_ico.svg";
 </script>
 <template>
-  <footer class="footer mt-25 min-h-85 bg-footer-bg">
+  <footer class="mt-25 min-h-85 bg-footer-bg sm:px-14 py-8">
     <div
       class="container flex justify-start gap-31 flex-wrap pb-9 border-b border-solid border-transparent-border-1"
     >
-      <div class="left">
+      <div class=" flex flex-col items-center lg:items-start gap-5">
         <h2 class="title">Присоединяйтесь</h2>
+        <div class="flex flex-row gap-3">
+          <a class="w-8 h-8 rounded-full bg-white flex items-center justify-center" href="">
+            <img :src="FacebookIcon" alt="" /> </a
+          ><a class="w-8 h-8 rounded-full bg-white flex items-center justify-center" href="">
+            <img :src="InstagramIcon" alt="" /> </a
+          ><a class="w-8 h-8 rounded-full bg-white flex items-center justify-center" href="">
+            <img :src="WhatsappIcon" alt="" />
+          </a>
+        </div>
       </div>
       <div class="right">
         <FooterLinksComponent

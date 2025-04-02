@@ -1,7 +1,7 @@
 <template>
-  <div class="wrapper">
+  <div class="text-white flex flex-col items-start gap-4">
     <h3 class="links-title">{{ info.title }}</h3>
-    <ul class="links">
+    <ul class="sm:max-h-45 flex flex-col justify-start gap-x-11 gap-y-2 flex-wrap">
       <li v-for="(item, index) in info.links" :key="index">
         <router-link :to="`/catalog/${item.name}`">{{ item.name }}</router-link>
       </li>
@@ -17,13 +17,6 @@ export default {
 };
 </script>
 <style scoped>
-.wrapper {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap:18px;
-}
 .links-title {
   font-family: "Raleway";
   font-weight: 400;
@@ -31,15 +24,6 @@ export default {
   line-height: 24px;
   letter-spacing: 2%;
   text-transform: uppercase;
-}
-ul.links {
-  max-height: 180px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  column-gap: 43px;
-  row-gap: 7px;
-  flex-wrap: wrap;
 }
 ul li {
   font-family: 'Raleway';
