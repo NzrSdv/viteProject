@@ -6,9 +6,11 @@
           <h2 class="title">{{ info.title }}</h2>
           <h4 class="sub--title">{{ info.subTitle }}</h4>
         </div>
-        <a :href="info.link" class="round--button">
+        <router-link :to="info.link" class="round--button">
+
           <img src="@/assets/LinkArrow_icon.svg" alt="" />
-        </a>
+
+        </router-link>
       </div>
     </div>
   </div>

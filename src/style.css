@@ -65,9 +65,8 @@ body {
 .container {
   /* width: 100%;
   padding: 0 57px; */
-  @apply mx-14 w-full;
+  @apply px-14 w-full flex items-stretch justify-center;
 }
-
 .section--gap .container {
   /* margin-top: 55px;
   display: flex;
@@ -75,9 +74,11 @@ body {
   align-items: flex-start;
   justify-content: flex-start;
   row-gap: 65px; */
-  @apply mt-16 flex flex-col items-start justify-start gap-16;
+  @apply mt-16 flex flex-col gap-16;
 }
 .section--title {
+
+
   font-family: "Raleway";
   font-weight: 700;
   font-size: 32px;

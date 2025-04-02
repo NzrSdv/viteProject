@@ -210,8 +210,15 @@ import OrderInput from "@/UI/OrderInput.vue";
 </template>
 <script>
 export default {
-    name:"PurchaseInputsComponent",
-    components:{OrderInput}
+  name: "PurchaseInputsComponent",
+  components: { OrderInput },
+  data() {
+    return {
+      personType: "1",
+      deliveryType: "1",
+      payType: "1",
+    };
+  },
 };
 </script>
 <style></style>

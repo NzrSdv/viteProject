@@ -1,7 +1,12 @@
 <script setup>
 import NeutralButton from "@/UI/NeutralButton.vue";
 import Delete from "@/assets/delete_icon (2).svg";
+import { useStore } from "vuex";
+const store = useStore();
+
+
 </script>
+
 
 <template>
   <div class="w-full flex flex-col gap-6">
@@ -37,9 +42,10 @@ import Delete from "@/assets/delete_icon (2).svg";
       </div>
       <div class="right">
         <button
+        @click="store.commit('removeCart',cartProduct.id)"
           class="flex flex-row gap-2 font-[Inter] text-[14px] text-dark-2"
         >
-          <img :src="Delete" alt="" /> Удалить с корзины
+          <img :src="Delete" alt=""  /> Удалить с корзины
         </button>
       </div>
     </div>

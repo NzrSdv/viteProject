@@ -18,18 +18,16 @@ const routes = [
     component: ProductScreen,
   },
   { path: "/cart", name: "Cart", component: CartScreen },
-  {path:"/order/:id", name:"Order", component: OrderScreen}
+  { path: "/order/:id", name: "Order", component: OrderScreen },
 ];
 
 const router = createRouter({
   routes,
   history: createWebHistory(),
   scrollBehavior(to, from, savedPosition) {
-    if (to.hash) {
-      return {
-        el: to.hash,
-      };
-    }
+    return {
+      top: 0,
+    };
   },
 });
 

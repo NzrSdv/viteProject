@@ -2,16 +2,22 @@
 import GradientButton from "@/UI/GradientButton.vue";
 </script>
 <template>
-  <section class="first--section">
-    <div class="section--imgs">
-      <img class="bg--img" src="@/assets/Home_photo.png" alt="" />
+  <section class="w-full min-h-100 relative overflow-hidden">
+    <div class="absolute z-10 bottom-0 top-0 left-0 right-0">
+      <img
+        class="w-full min-h-100 object-cover"
+        src="@/assets/Home_photo.png"
+        alt=""
+      />
     </div>
-    <div class="section--content">
-      <div class="left--arrow arrow"><</div>
-      <div class="left">
-        <div class="text">
-          <h2 class="title">Полная обстановка за один день!</h2>
-          <h4 class="sub-title">Гарантируем качество и долговечность.</h4>
+    <div
+      class="w-full h-full absolute z-30 text-white bg-linear-[90deg,rgba(0,0,0,0.3)_30%,rgba(255,255,255,0)_100%] flex items-center md:justify-start gap-5"
+    >
+      <div class="left--arrow arrow hidden"><</div>
+      <div class="w-xl h-full flex flex-col items-start justify-start mt-none md:mt-9 gap-6">
+        <div class="flex flex-col items-start justify-start gap-9">
+          <h2 class="font-[Raleway] font-bold text-4xl/7 md:text-6xl/15">Полная обстановка за один день!</h2>
+          <h4 class="max-w-85 font-[Raleway] font-normal text-3xl/8">Гарантируем качество и долговечность.</h4>
         </div>
         <GradientButton
           text="Подробнее"
@@ -33,7 +39,7 @@ export default {
 };
 </script>
 <style scoped>
-.first--section {
+/* .first--section {
   width: 100%;
   max-height: fit-content;
   position: relative;
@@ -55,8 +61,8 @@ export default {
 
 .section--content {
   position: absolute;
-  height: min(100%,37dvw);
-width: 100%;
+  height: min(100%, 37dvw);
+  width: 100%;
   z-index: 3;
   background: linear-gradient(
     90deg,
@@ -67,7 +73,7 @@ width: 100%;
   display: flex;
   justify-content: flex-start;
   gap: 20px;
-}
+} */
 
 .left {
   width: 573px;
@@ -128,7 +134,7 @@ width: 100%;
   z-index: 2;
 }
 .deliver--img {
-  height: min(100%,37dvw);
+  height: min(100%, 37dvw);
   object-fit: cover;
   position: absolute;
   right: min(100px, 7dvw);
@@ -141,20 +147,19 @@ width: 100%;
   .deliver--img {
     display: none;
   }
-  .left{
-    gap:10px;
+  .left {
+    gap: 10px;
   }
   .title {
-  max-width: 300px;
+    max-width: 300px;
     /* typo */
 
-  font-size: 2rem;
-  line-height: 40px;
-
-}
-.sub-title {
-  font-size: 20px;
-  line-height: 25px;
-}
+    font-size: 2rem;
+    line-height: 40px;
+  }
+  .sub-title {
+    font-size: 20px;
+    line-height: 25px;
+  }
 }
 </style>

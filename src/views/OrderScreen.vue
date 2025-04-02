@@ -1,5 +1,12 @@
 <script setup>
 import PurchaseInputsComponent from "@/components/purchase/purchaseInputsComponent.vue";
+import { computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { useStore } from "vuex";
+import AccentButton from "../UI/AccentButton.vue";
+const route = useRoute();
+const store = useStore();
+const product = computed(() => store.getters.getProductById(route.params.id));
 </script>
 <template>
   <main class="main">
@@ -8,7 +15,7 @@ import PurchaseInputsComponent from "@/components/purchase/purchaseInputsCompone
         <div class="flex flex-row w-full gap-7 items-start">
           <div class="left flex flex-col gap-8 w-2/3">
             <h2 class="section--title">Покупатель и регион</h2>
-            <PurchaseInputsComponent/>
+            <PurchaseInputsComponent />
           </div>
           <div
             class="right flex flex-col gap-11 py-4 px-7 pb-11 border border-solid border-light-44 w-1/3 rounded-lg"
@@ -28,19 +35,19 @@ import PurchaseInputsComponent from "@/components/purchase/purchaseInputsCompone
                   <h3
                     class="font-[Raleway] font-semibold text-base/5 text-dark-1"
                   >
-                    Комфорт 4 дуб сонома белый без ящика
+                    {{ product.name }}
                   </h3>
                   <h5
                     class="font-[Raleway] font-normal text-[10px]/3 text-dark-45"
                   >
-                    Код Товара: Fn-0026
+                    Код Товара: {{ product.code }}
                   </h5>
                 </div>
                 <div class="right">
                   <h5
                     class="font-[Plus_Jakarta_Sans] font-bold text-base/5 text-dark-1"
                   >
-                    755000₸
+                    {{ product.price.currentPrice.value }}
                   </h5>
                 </div>
               </div>
@@ -54,7 +61,7 @@ import PurchaseInputsComponent from "@/components/purchase/purchaseInputsCompone
                   <h5
                     class="font-[Plus_Jakarta_Sans] font-medium text-base/5 text-dark-1 opacity-50"
                   >
-                    1350₸
+                    {{ product.price.currentPrice.value }}
                   </h5>
                 </div>
               </div>
@@ -76,9 +83,7 @@ import PurchaseInputsComponent from "@/components/purchase/purchaseInputsCompone
               </div>
               <div class="flex flex-row justify-between items-start b w-full">
                 <div class="left flex flex-col w-5/9">
-                  <h3
-                    class="font-[Raleway] font-bold text-base/5 text-dark-1"
-                  >
+                  <h3 class="font-[Raleway] font-bold text-base/5 text-dark-1">
                     Итого:
                   </h3>
                 </div>
@@ -86,10 +91,20 @@ import PurchaseInputsComponent from "@/components/purchase/purchaseInputsCompone
                   <h5
                     class="font-[Plus_Jakarta_Sans] font-bold text-base/5 text-dark-1"
                   >
-                    755000₸
+                    {{ product.price.currentPrice.value }}
                   </h5>
                 </div>
               </div>
+              <AccentButton
+                text="Купить"
+                @click="
+                  () => {
+                    store.commit('buyProduct',product);
+                    store.commit('removeCart', product.id);
+                    $router.push('/cart');
+                  }
+                "
+              />
             </div>
           </div>
         </div>
@@ -99,14 +114,7 @@ import PurchaseInputsComponent from "@/components/purchase/purchaseInputsCompone
 </template>
 <script>
 export default {
-  components: { PurchaseInputsComponent, },
-  data() {
-    return {
-      personType: "1",
-      deliveryType: "1",
-      payType: "1",
-    };
-  },
+  components: { PurchaseInputsComponent, AccentButton },
 };
 </script>
 <style></style>

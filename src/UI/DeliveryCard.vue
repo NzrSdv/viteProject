@@ -50,6 +50,7 @@ export default {
   justify-content: center;
   align-items: flex-start;
   gap:24px;
+  padding-left: 28px;
 }
 .title {
   color: #151515;
