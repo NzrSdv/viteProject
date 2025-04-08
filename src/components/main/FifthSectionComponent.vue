@@ -5,11 +5,11 @@ import Delivery2 from "@/assets/photos/Delivery2_photo.png";
 import Delivery3 from "@/assets/photos/Delivery3_photo.png";
 </script>
 <template>
-  <section class="section--gap">
-    <div class="container">
+  <section class="section--gap w-full">
+    <div class="container w-full">
       <h2 class="section--title">Доставка и оплата</h2>
-      <div class="content">
-        <DeliveryCard v-for="(item, index) in info" :key="index" :info="item"/>
+      <div class="w-full flex flex-col items-center lg:flex-row gap-5">
+        <DeliveryCard class="w-full sm:w-2/3 lg:w-1/3" v-for="(item, index) in info" :key="index" :info="item"/>
       </div>
     </div>
   </section>

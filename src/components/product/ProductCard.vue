@@ -18,10 +18,10 @@ import NewMarker from "@/UI/NewMarker.vue";
         <NewMarker v-if="product.emphasis?.type == 'new'" />
       </div>
       <div
-        class="font-[Raleway] font-normal card--content w-full h-20 md:h-25 flex flex-col justify-between items-start"
+        class="font-[Raleway] font-normal card--content w-full h-20 md:h-25 flex flex-col justify-between items-center md:items-start"
       >
         <div
-          class="text flex flex-col items-start justify-start max-w-67 gap-2"
+          class="text flex flex-col items-center md:items-start justify-start max-w-67 gap-2"
         >
           <h4 class="md:text-xs/4 text-[#999999]">
             {{ product.classification }}
