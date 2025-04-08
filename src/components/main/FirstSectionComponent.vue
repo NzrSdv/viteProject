@@ -9,11 +9,11 @@ import DelivererPhoto from "@/assets/photos/Deliverer_photo.png";
       <img class="w-full min-h-120 object-cover" :src="HomePhoto" alt="" />
     </div>
     <div
-      class="w-full h-full absolute z-30 text-white bg-linear-[90deg,rgba(0,0,0,0.3)_30%,rgba(255,255,255,0)_100%] flex items-center justify-center md:justify-start gap-5"
+      class="w-full h-full absolute z-30 text-white bg-linear-[90deg,rgba(0,0,0,0.3)_30%,rgba(255,255,255,0)_100%] flex items-center justify-center md:justify-start gap-5 "
     >
       <div class="w-5 md:w-25 h-full flex items-center justify-center duration-200 hover:bg-[rgba(0,0,0,0.2)] absolute hidden lg:flex"><</div>
       <div
-        class="lg:w-xl w-full h-full flex flex-col items-center lg:items-start justify-center lg:justify-start mt-none md:mt-9 gap-6 px-2 lg:px-none"
+        class="lg:w-xl w-full h-full flex flex-col items-center lg:items-start justify-center lg:justify-start mt-none md:mt-9 gap-6 px-2 lg:px-none lg:pl-25"
       >
         <div class="flex flex-col items-center text-center lg:text-start lg:items-start justify-start gap-9">
           <h2 class="lg:max-w-140 font-[Raleway] font-bold md:text-6xl/15 text-3xl/9">

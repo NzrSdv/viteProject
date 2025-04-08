@@ -4,9 +4,11 @@ import NewMarker from "@/UI/NewMarker.vue";
 </script>
 <template>
   <router-link :to="`/product/${product.id}`">
-    <div class="card w-[232px] h-[312px] md:w-[290px] md:h-[390px] border rounded flex flex-col justify-start items-start gap-6">
+    <div
+      class="card w-[232px] h-[312px] md:w-[290px] md:h-[390px] rounded flex flex-col justify-start items-start gap-6"
+    >
       <div
-        class="card--img w-full h-[176px] md:h-[220px] bg-cover bg-no-repeat relative bg-center border border-solid border-[var(--color-bg)]"
+        class="card--img w-full h-[176px] md:h-[220px] bg-cover bg-no-repeat relative bg-center"
         :style="{ backgroundImage: `url(${product.img})` }"
       >
         <DiscountMarker
@@ -15,9 +17,15 @@ import NewMarker from "@/UI/NewMarker.vue";
         />
         <NewMarker v-if="product.emphasis?.type == 'new'" />
       </div>
-      <div class="font-[Raleway] font-normal card--content w-full h-20 md:h-25 flex flex-col justify-between items-start">
-        <div class="text flex flex-col items-start justify-start max-w-67 gap-2">
-          <h4 class="md:text-xs/4 text-[#999999]">{{ product.classification }}</h4>
+      <div
+        class="font-[Raleway] font-normal card--content w-full h-20 md:h-25 flex flex-col justify-between items-start"
+      >
+        <div
+          class="text flex flex-col items-start justify-start max-w-67 gap-2"
+        >
+          <h4 class="md:text-xs/4 text-[#999999]">
+            {{ product.classification }}
+          </h4>
           <h2 class="name">{{ product.name }}</h2>
         </div>
         <div class="price">
