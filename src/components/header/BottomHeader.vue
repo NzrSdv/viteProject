@@ -24,10 +24,10 @@
           <router-link to="/catalog/Шкафы (МДФ)">Акции</router-link>
         </li>
         <li class="hover:bg-grey-500" v-if="status">
-          <router-link to="/">О нас</router-link>
+          <router-link :to="{path:$route.path,hash:'#footerAnchor'}">О нас</router-link>
         </li>
         <li class="hover:bg-grey-500" v-if="status">
-          <router-link to="/">Контакты </router-link>
+          <router-link :to="{path:$route.path,hash:'#footerAnchor'}">Контакты </router-link>
         </li>
       </ul>
     </nav>

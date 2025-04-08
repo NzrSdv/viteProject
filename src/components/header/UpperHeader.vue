@@ -1,3 +1,7 @@
+<script setup>
+
+</script>
+
 <template>
   <div class="w-full flex flex-row justify-between items-center">
     <router-link :to="{ name: 'Home' }">

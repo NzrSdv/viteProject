@@ -21,7 +21,7 @@ import WhatsappIcon from "@/assets/icons/whatsapp_ico.svg";
           </a>
         </div>
       </div>
-      <div class="right">
+      <div class="right" id="footerAnchor">
         <FooterLinksComponent
           v-for="(item, index) in footerInfo"
           :key="index"
