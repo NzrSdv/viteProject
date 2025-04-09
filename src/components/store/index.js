@@ -31,7 +31,7 @@ export default createStore({
       state.cart = state.cart.filter((element) => element.id != id);
       console.log(state.cart);
       console.log(state.purchased);
-      console.log('deleted');
+      console.log("deleted");
       localStorage.setItem("Cart", JSON.stringify(state.cart));
     },
     buyProduct(state, product) {
@@ -41,6 +41,9 @@ export default createStore({
   getters: {
     getProductById: (state) => (id) => {
       return state.cart.find((element) => element.id == id);
+    },
+    getCartLength: (state) => {
+      return state.cart.length;
     },
   },
 });

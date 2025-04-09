@@ -9,7 +9,7 @@ import ProductCard from "@/components/product/ProductCard.vue";
 
       <div class="content">
         <nav class="product--nav">
-          <h4 class="sub--title">Категория {{}}</h4>
+          <h4 class="sub--title">Категория </h4>
           <div class="links">
             <div
               :class="[
@@ -42,6 +42,7 @@ import ProductCard from "@/components/product/ProductCard.vue";
             @pageChange="pageClick"
             :pages="products.length"
             :currentPage="currentPage"
+            :currentPages="currentPages"
           />
         </div>
       </div>
@@ -58,7 +59,8 @@ export default {
     return {
       products: madeProducts,
       currentPage: 0,
-      currentProducts:[],
+      currentPages: [1, 2, 3, 4],
+      currentProducts: [],
       links: [
         { name: "Шкафы (МДФ)" },
         { name: "Шкафы (распашные)" },
@@ -81,13 +83,16 @@ export default {
     pageClick(newPage) {
       console.log(newPage);
       this.currentPage = newPage;
-      this.currentProducts = this.products[this.currentPage]
+      this.currentProducts = this.products[this.currentPage];
+      this.currentPages = [];
+      for (let i = this.currentPage + 1; i < this.currentPage + 5; i++) {
+        this.currentPages.push(i);
+      }
     },
   },
   created() {
-
     // current page
-    this.currentProducts = this.products[this.currentPage]
+    this.currentProducts = this.products[this.currentPage];
 
     // current category
     this.current =

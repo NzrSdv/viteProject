@@ -1,19 +1,24 @@
 <script setup></script>
 <template>
   <div class="pages">
-    <div class="arrowButton" @click="() => {
-          if (currentPage > 0 ) {
+    <div
+      class="arrowButton"
+      @click="
+        () => {
+          if (currentPage > 0) {
             $emit('pageChange', currentPage - 1);
           }
-        }">
+        }
+      "
+    >
       <
     </div>
     <div class="numberPages">
       <div
-        :class="['pageButton', currentPage === index ? 'active' : '']"
-        v-for="(item, index) in pages"
+        :class="['pageButton', currentPage === item-1 ? 'active' : '']"
+        v-for="(item, index) in currentPages"
         :key="index"
-        @click="$emit('pageChange', index)"
+        @click="$emit('pageChange', item-1)"
       >
         {{ item }}
       </div>
@@ -22,7 +27,7 @@
       class="arrowButton"
       @click="
         () => {
-          if (currentPage < pages-1) {
+          if (currentPage < pages - 1) {
             $emit('pageChange', currentPage + 1);
           }
         }
@@ -38,6 +43,7 @@ export default {
   props: {
     pages: Number,
     currentPage: Number,
+    currentPages:Array
   },
 };
 </script>
@@ -66,7 +72,7 @@ export default {
   width: 30px;
   height: 42px;
   border-radius: 7px;
-
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;

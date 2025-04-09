@@ -36,16 +36,18 @@ const store = useStore();
           <div class="flex flex-col justify-start gap-13 max-w-md pt-9">
             <div class="flex flex-col gap-9">
               <div class="flex flex-col gap-4">
-                <h1 class="title">{{product.name}}</h1>
-                <h5 class="sub-title">Код Товара: {{product.code}}</h5>
+                <h1 class="title">{{ product.name }}</h1>
+                <h5 class="sub-title">Код Товара: {{ product.code }}</h5>
               </div>
               <div class="flex flex-col gap-5">
-                <h3 class="price">{{product.price.currentPrice.value}}</h3>
-                <h4 class="oldPrice">{{product.price.oldPrice?.value}}</h4>
+                <h3 class="price">{{ product.price.currentPrice.value }}</h3>
+                <h4 class="oldPrice">{{ product.price.oldPrice?.value }}</h4>
                 <div class="flex flex-row gap-6">
                   <AccentButton
                     text="В корзину"
-                    @click="() => store.commit('addCart', {...product,quantity:1})"
+                    @click="
+                      () => store.commit('addCart', { ...product, quantity: 1 })
+                    "
                   />
                   <AccentButtonTwo text="Купить в 1 клик" />
                 </div>
@@ -105,9 +107,21 @@ export default {
     this.product = madeProducts
       .flat()
       .filter((element, index) => index == this.$route.params.id - 1)[0];
-      console.log(madeProducts
+    console.log(
+      madeProducts
+        .flat()
+        .filter((element, index) => index == this.$route.params.id - 1)
+    );
+  },
+  updated() {
+    this.product = madeProducts
       .flat()
-      .filter((element, index) => index == this.$route.params.id - 1))
+      .filter((element, index) => index == this.$route.params.id - 1)[0];
+    console.log(
+      madeProducts
+        .flat()
+        .filter((element, index) => index == this.$route.params.id - 1)
+    );
   },
 };
 </script>

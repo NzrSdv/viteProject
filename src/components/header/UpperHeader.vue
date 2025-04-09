@@ -1,5 +1,10 @@
 <script setup>
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 
+const store = useStore();
+
+const cartLength = computed(() => store.getters.getCartLength)
 </script>
 
 <template>
@@ -21,12 +26,13 @@
         </label>
       </div>
       <div
-        class="w-1/2 text-light-455 flex g-2 items-center justify-center"
-        @click="() => console.log('clicked')"
+        class="w-1/2 text-light-455 flex gap-2 items-center justify-center"     
       >
         <router-link to="/cart">
-          <label class="flex flex-row gap-2">
+          <label class="relative flex flex-row gap-4">
+            <div class="absolute left-4 top-0 w-5 h-5 bg-[#FFC844] rounded-full text-white flex items-center justify-center">{{ cartLength }}</div>
             <img src="@/assets/icons/Cart_icon.svg" />
+
             <h2 class="md:block hidden">Корзина</h2>
           </label>
         </router-link>

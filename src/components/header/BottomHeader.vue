@@ -12,10 +12,7 @@
         <div class="w-full h-[2px] bg-black"></div>
       </div>
       <ul
-        :class="[
-          'flex flex-col md:flex-row md:shadow-none z-20 p-2 rounded items-center justify-center gap-8 text-dark-05 font-[Raleway] font-medium text-base/6',
-          status ? 'shadow-md bg-none' : 'shadow-none ',
-        ]"
+        class="md: flex flex-col md:flex-row z-20 p-2 rounded items-center justify-center gap-8 text-dark-05 font-[Raleway] font-medium text-base/6"
       >
         <li class="hover:bg-grey-500" v-if="status">
           <router-link to="/catalog/Шкафы (МДФ)">Каталог товаров</router-link>
@@ -24,10 +21,14 @@
           <router-link to="/catalog/Шкафы (МДФ)">Акции</router-link>
         </li>
         <li class="hover:bg-grey-500" v-if="status">
-          <router-link :to="{path:$route.path,hash:'#footerAnchor'}">О нас</router-link>
+          <router-link :to="{ path: $route.path, hash: '#footerAnchor' }"
+            >О нас</router-link
+          >
         </li>
         <li class="hover:bg-grey-500" v-if="status">
-          <router-link :to="{path:$route.path,hash:'#footerAnchor'}">Контакты </router-link>
+          <router-link :to="{ path: $route.path, hash: '#footerAnchor' }"
+            >Контакты
+          </router-link>
         </li>
       </ul>
     </nav>
