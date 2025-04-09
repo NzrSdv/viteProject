@@ -10,6 +10,8 @@ const cartStore = computed(() => store.state.cart);
   <main class="main">
     <section class="section--gap">
       <div class="container flex flex-col">
+        <div class="section--title"v-if="cart?.length">Корзина</div>
+
         <div v-if="cart?.length"
           class="flex w-full flex-col"
           v-for="(item, index) in cart"
@@ -17,7 +19,7 @@ const cartStore = computed(() => store.state.cart);
         >
           <CartCardComponent :line="true" :cartProduct="item" />
         </div>
-        <div v-if="!cart?.length" class="container">
+        <div v-if="!cart?.length" class="container min-h-100">
           <h2 class="text-center font-[Raleway] font-bold text-3xl/10 ">Здесь пусто!</h2>
         </div>
       </div>

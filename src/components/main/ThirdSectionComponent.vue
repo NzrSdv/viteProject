@@ -35,7 +35,7 @@ import SecondImg from "@/assets/photos/Chair2_photo.png";
           </div>
         </div>
         <div
-          class="lg:w-1/3 w-full lg:min-h-full min-h-130 py-13 px-11 rounded-3xl object-cover flex flex-col items-center justify-center relative overflow-hidden"
+          class="lg:w-1/3 w-full lg:min-h-full min-h-130 py-13 px-11 rounded-3xl object-cover flex flex-col items-center lg:items-start justify-center relative overflow-hidden"
         >
           <div
             class="w-full h-full  absolute top-0 bottom-0 right-0 left-0 z-10 flex items-center justify-center"
