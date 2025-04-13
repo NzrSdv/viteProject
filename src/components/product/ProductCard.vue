@@ -12,10 +12,10 @@ import NewMarker from "@/UI/NewMarker.vue";
         :style="{ backgroundImage: `url(${product.img})` }"
       >
         <DiscountMarker
-          v-if="product.emphasis?.type == 'discount'"
-          :discount="product.emphasis?.value"
+          v-if="product.discountProduct != 0"
+          :discount="product.discountProduct"
         />
-        <NewMarker v-if="product.emphasis?.type == 'new'" />
+        <NewMarker v-if="product.newProduct" />
       </div>
       <div
         class="font-[Raleway] font-normal card--content w-full h-20 md:h-25 flex flex-col justify-between items-center md:items-start"
@@ -26,13 +26,13 @@ import NewMarker from "@/UI/NewMarker.vue";
           <h4 class="md:text-xs/4 text-[#999999]">
             {{ product.classification }}
           </h4>
-          <h2 class="name">{{ product.name }}</h2>
+          <h2 class="name text-center md:text-start">{{ product.name }}</h2>
         </div>
         <div class="price">
-          <h3 class="oldPrice" v-if="product.price?.oldPrice">
-            {{ product.price.oldPrice.value }}
+          <h3 class="oldPrice" v-if="product.oldPrice != 0">
+            {{ product.oldPrice }}
           </h3>
-          <h3 class="currentPrice">{{ product.price.currentPrice.value }}</h3>
+          <h3 class="currentPrice">{{ product.currentPrice }}</h3>
         </div>
       </div>
     </div>

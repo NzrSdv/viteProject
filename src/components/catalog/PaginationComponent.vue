@@ -1,8 +1,8 @@
 <script setup></script>
 <template>
-  <div class="pages">
+  <div class="flex items-center h-10 justify-center gap-6">
     <div
-      class="arrowButton"
+      class="w-17 h-full flex justify-center items-center border border-solid border-[#bcbcbc] rounded-md"
       @click="
         () => {
           if (currentPage > 0) {
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div
-      class="arrowButton"
+      class="w-17 h-full flex justify-center items-center border border-solid border-[#bcbcbc] rounded-md"
       @click="
         () => {
           if (currentPage < pages - 1) {
@@ -48,13 +48,13 @@ export default {
 };
 </script>
 <style scoped>
-.pages {
+/* .pages {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 26px;
-}
-.arrowButton {
+} */
+/* .arrowButton {
   width: 68px;
   height: 42px;
   display: flex;
@@ -62,7 +62,7 @@ export default {
   align-items: center;
   border: 1px solid #bcbcbc;
   border-radius: 7px;
-}
+} */
 .numberPages {
   display: flex;
   align-items: center;

@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 const initalState = {
+  products:[],
   cart: [],
   purchased: [],
 };

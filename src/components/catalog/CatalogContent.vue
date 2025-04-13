@@ -7,13 +7,15 @@ import ProductCard from "@/components/product/ProductCard.vue";
     <div class="container">
       <h2 class="section--title">Акции, скидки</h2>
 
-      <div class="content">
-        <nav class="product--nav">
-          <h4 class="sub--title">Категория </h4>
-          <div class="links">
+      <div class="w-full flex flex-row items-center lg:items-start gap-8">
+        <nav
+          class="w-1/4 border border-solid border-[#e5e5e5] rounded-xl hidden lg:flex flex-col items-stretch px-6 pt-6 pb-9 justify-stretch"
+        >
+          <h4 class="sub--title">Категория</h4>
+          <div class="w-61 flex flex-col justify-center items-stretch gap-3">
             <div
               :class="[
-                'link',
+                ' pt-3 border-t border-solid border-[#e5e5e5]',
                 current === item.name ? 'selected' : '',
                 index == 0 ? 'top' : '',
               ]"
@@ -27,11 +29,16 @@ import ProductCard from "@/components/product/ProductCard.vue";
             </div>
           </div>
         </nav>
-        <div class="products">
+        <div
+          class="lg:w-3/4 w-full flex flex-col items-center justify-center lg:justify-start"
+        >
           <select name="" id="">
             <option value="">по популярности</option>
+            <option value="">по цене</option>
           </select>
-          <div class="cards">
+          <div
+            class="flex flex-wrap gap-8 justify-center lg:justify-start items-center"
+          >
             <ProductCard
               v-for="(item, index) in currentProducts"
               :key="index"
@@ -81,12 +88,19 @@ export default {
   },
   methods: {
     pageClick(newPage) {
-      console.log(newPage);
       this.currentPage = newPage;
       this.currentProducts = this.products[this.currentPage];
       this.currentPages = [];
-      for (let i = this.currentPage + 1; i < this.currentPage + 5; i++) {
-        this.currentPages.push(i);
+      if (this.currentPage + 4 < this.products.length){
+        for (let i = this.currentPage + 1; i < this.currentPage + 5; i++) {
+          this.currentPages.push(i);
+        }
+      }
+      else{
+        for(let i = this.products.length; i > this.products.length - 4; i--){
+          this.currentPages.push(i)
+        }
+        this.currentPages = this.currentPages.reverse();
       }
     },
   },
@@ -115,14 +129,14 @@ export default {
 };
 </script>
 <style scoped>
-.content {
+/* .content {
   display: grid;
   grid-template-columns: repeat(auto-fill, 290px);
   align-items: flex-start;
   gap: 32px;
-  justify-content: center;
-}
-.product--nav {
+  justify-content: space-between;
+} */
+/* .product--nav {
   border: 1px solid #e5e5e5;
   border-radius: 10px;
 
@@ -132,7 +146,7 @@ export default {
   padding: 23px 25px 37px 20px;
   justify-content: stretch;
   gap: 12px;
-}
+} */
 h4.sub--title {
   color: #151515;
   font-family: "Raleway";
@@ -144,13 +158,13 @@ h4.sub--title {
   padding-bottom: 14px;
   border-bottom: 1px solid #e5e5e5;
 }
-.links {
+/* .links {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
   gap: 12px;
-}
+} */
 .top {
   border-top: 1px solid transparent !important;
 }
@@ -178,15 +192,15 @@ h4.sub--title {
 .selected::before {
   background-color: #ffc844;
 }
-.products {
+/* .products {
   grid-column: 2/-1;
   display: subgrid;
   flex-direction: column;
   align-items: stretch;
-}
-.cards {
+} */
+/* .cards {
   display: flex;
   gap: 32px;
   flex-wrap: wrap;
-}
+} */
 </style>

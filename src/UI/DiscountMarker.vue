@@ -1,6 +1,6 @@
 <template>
   <div class="round">
-    {{ discount }}
+    -{{ discount }}%
   </div>
 </template>
 <script>
