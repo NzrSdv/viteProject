@@ -25,7 +25,7 @@ import DelivererPhoto from "@/assets/photos/Deliverer_photo.png";
         </div>
         <GradientButton
           text="Подробнее"
-          :clickFunction="() => console.log('clicked the button gradient')"
+          :clickFunction="() => {$router.push('/catalog/Шкафы (МДФ)')}"
           width="189px"
         />
       </div>

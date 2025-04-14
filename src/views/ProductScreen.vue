@@ -5,6 +5,7 @@ import AccentButtonTwo from "../UI/AccentButtonTwo.vue";
 import ProductsRow from "../components/product/ProductsRow.vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+import AccordionBase from "../UI/accordion/AccordionBase.vue";
 const store = useStore();
 
 const router = useRouter();
@@ -12,10 +13,10 @@ const router = useRouter();
 
 <template>
   <main class="main">
-    <section class="section--gap">
+    <section class="section--gap px-2">
       <div class="flex flex-column items-center justify-center">
-        <div class="flex flex-row items-start gap-40">
-          <div class="w-lg grid gap-4 grid-cols-4 grid-rows-5 row-span-1">
+        <div class="flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-40">
+          <div class="w-full px-2 md:w-lg grid gap-4 grid-cols-4 grid-rows-5 row-span-1">
             <div
               class="border-2 border-solid border-blue-500 col-span-4 row-span-4"
             >
@@ -37,17 +38,17 @@ const router = useRouter();
             </div>
           </div>
           <div class="flex flex-col justify-start gap-13 max-w-md pt-9">
-            <div class="flex flex-col gap-9">
+            <div class="flex flex-col lg:text-start text-center  gap-9">
               <div class="flex flex-col gap-4">
                 <h1 class="title">{{ product.name }}</h1>
                 <h5 class="sub-title">Код Товара: {{ product.code }}</h5>
               </div>
-              <div class="flex flex-col gap-5">
-                <h3 class="price">{{ product.currentPrice }}</h3>
+              <div class="flex flex-col lg:items-start items-center gap-5">
+                <h3 class="price">{{ product.currentPrice }}₸</h3>
                 <h4 v-if="product.oldPrice != 0" class="oldPrice">
-                  {{ product?.oldPrice }}
+                  {{ product?.oldPrice }}₸
                 </h4>
-                <div class="flex flex-row gap-6">
+                <div class="w-full flex flex-row items-center justify-between gap-6">
                   <AccentButton
                     text="В корзину"
                     @click="
@@ -87,8 +88,10 @@ const router = useRouter();
           Подробнее о товаре
           <div class="h-[1px] w-full bg-light-4"></div>
         </h2>
-        <div class="border border-solid border-light-4 w-full">
-          <div class="accordion"></div>
+        <div class="w-full">
+          <div class="border border-solid border-[#EAEAEA] rounded-3xl py-12 px-15">
+            <AccordionBase :titles="['Характеристики','Оплата','Доставка','Гарантии']" :extraInfo="product.characteristics"/>
+          </div>
         </div>
       </div>
     </section>

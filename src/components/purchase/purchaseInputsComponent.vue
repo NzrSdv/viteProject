@@ -180,9 +180,9 @@ import OrderInput from "@/UI/OrderInput.vue";
     </div>
 
     <div class="form flex flex-col w-full lg:w-2/3 gap-2">
-      <div class="flex flex-row w-full gap-5">
-        <OrderInput title="Имя" placeholder="Имя" class="w-1/2" />
-        <OrderInput title="Фамилия" placeholder="Фамилия" class="w-1/2" />
+      <div class="flex md:flex-row flex-col w-full gap-5">
+        <OrderInput title="Имя" placeholder="Имя" class="md:w-1/2 w-full" />
+        <OrderInput title="Фамилия" placeholder="Фамилия" class="md:w-1/2 w-full" />
       </div>
       <OrderInput title="Email" placeholder="sadvakasov.rakhat@gmail.com" />
       <OrderInput title="Телефон" placeholder="sadvakasov.rakhat@gmail.com" />

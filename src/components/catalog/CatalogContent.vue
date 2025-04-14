@@ -9,7 +9,21 @@ import ProductCard from "@/components/product/ProductCard.vue";
     <div class="container">
       <h2 class="section--title">Акции, скидки</h2>
 
-      <div class="w-full flex flex-row items-center lg:items-start gap-8">
+      <div
+        class="w-full flex flex-col lg:flex-row items-center lg:items-start gap-8"
+      >
+        <div>
+          <button
+            class="lg:hidden flex px-4 py-2 rounded border border-solid border-[#e5e5e5]"
+            @click="
+              () => {
+                responsiveCategory = true;
+              }
+            "
+          >
+            Category : <span class="text-[#026D4E]">{{ this.current }}</span>
+          </button>
+        </div>
         <nav
           class="w-1/4 border border-solid border-[#e5e5e5] rounded-xl hidden lg:flex flex-col items-stretch px-6 pt-6 pb-9 justify-stretch"
         >
@@ -34,12 +48,18 @@ import ProductCard from "@/components/product/ProductCard.vue";
         <div
           class="lg:w-3/4 w-full flex flex-col items-center justify-center lg:justify-start gap-7"
         >
-          <div class="w-full flex items-center justify-start gap-3">
-            <label for="sort" class="flex items-center justify-center">
+          <div
+            class="flex items-center justify-start gap-3 px-5 py-2 rounded border border-solid border-[#E5E5E5]"
+          >
+            <label for="sort" class="flex items-center justify-center gap-3">
               <img class="" :src="SortIcon" alt="" />
               Сортировка:
             </label>
-            <select class="text-[#026D4E]" name="" id="sort">
+            <select
+              class="text-[#026D4E] underlined decoration-"
+              name=""
+              id="sort"
+            >
               <option class="text-black" value="">по популярности</option>
               <option class="text-black" value="">по цене</option>
             </select>
@@ -60,6 +80,47 @@ import ProductCard from "@/components/product/ProductCard.vue";
             :currentPages="currentPages"
           />
         </div>
+      </div>
+    </div>
+    <div
+      v-if="responsiveCategory"
+      class="lg:hidden flex items-center justify-center fixed top-0 bottom-0 left-0 right-0 bg-black/20 z-60"
+      @click="
+        () => {
+          responsiveCategory = false;
+        }
+      "
+    >
+      <div
+        class="bg-white absolute left-0 top-0 bottom-0 flex flex-col items-center justify-start pt-5"
+      >
+        <ul>
+          <li
+            class="py-2 px-8 border-b border-b-solid border-[#e5e5e5]"
+            v-for="(link, index) in links"
+            :key="index"
+            @click="
+              () => {
+                responsiveCategory = false;
+              }
+            "
+          >
+            <router-link
+              :to="{ name: 'Catalog', params: { category: link.name } }"
+              >{{ link.name }}</router-link
+            >
+          </li>
+          <li
+            class="py-2 px-4 text-center text-red-600 text-2xl/10"
+            @click="
+              () => {
+                responsiveCategory = false;
+              }
+            "
+          >
+            X
+          </li>
+        </ul>
       </div>
     </div>
   </section>
@@ -92,6 +153,7 @@ export default {
         { name: "Б/У" },
       ],
       current: "",
+      responsiveCategory: false,
     };
   },
   methods: {
