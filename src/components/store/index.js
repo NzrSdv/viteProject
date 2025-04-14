@@ -47,4 +47,7 @@ export default createStore({
       return state.cart.length;
     },
   },
+  actions:{
+    
+  }
 });

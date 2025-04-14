@@ -61,15 +61,15 @@ import OrderInput from "@/UI/OrderInput.vue";
       местоположение”. а город впишите в поле “Город”
     </h6>
 
-    <div class="flex flex-row gap-2 w-full">
+    <div class="flex flex-col lg:flex-row gap-2 w-full">
       <div
-        class="flex flex-col py-6 px-2 border border-solid border-light-35 rounded gap-7 w-1/3"
+        class="flex flex-col py-4 px-2 border border-solid border-light-35 rounded gap-7 w-full lg:w-1/3"
       >
         <h3 class="text-dark-05 font-semibold text-[30px]/[39px]">Доставка</h3>
         <h5 class="font-[Raleway] text-base/6 text-dark-1 opacity-55">
           Выберите способ доставки
         </h5>
-        <div class="inputs flex flex-row gap-7 items-center w-full">
+        <div class="inputs flex 2xl:flex-nowrap flex-wrap flex-row gap-7 items-center w-full justify-center lg:justify-start">
           <div class="flex flex-row gap-2 items-center">
             <input
               :class="[
@@ -111,13 +111,13 @@ import OrderInput from "@/UI/OrderInput.vue";
         </div>
       </div>
       <div
-        class="flex flex-col py-6 px-2 border border-solid border-light-35 rounded gap-7 w-2/3"
+        class="flex flex-col py-4 px-2 border border-solid border-light-35 rounded gap-7 w-full lg:w-2/3"
       >
         <h3 class="text-dark-05 font-semibold text-[30px]/[39px]">Оплата</h3>
         <h5 class="font-[Raleway] text-base/6 text-dark-1 opacity-55">
           Выберите способ оплаты
         </h5>
-        <div class="inputs flex flex-row gap-7 items-center">
+        <div class="inputs flex flex-row lg:flex-nowrap flex-wrap gap-7 items-center lg:justify-start justify-center">
           <div class="flex flex-row gap-2 items-center">
             <input
               :class="[
@@ -179,7 +179,7 @@ import OrderInput from "@/UI/OrderInput.vue";
       </div>
     </div>
 
-    <div class="form flex flex-col w-2/3 gap-2">
+    <div class="form flex flex-col w-full lg:w-2/3 gap-2">
       <div class="flex flex-row w-full gap-5">
         <OrderInput title="Имя" placeholder="Имя" class="w-1/2" />
         <OrderInput title="Фамилия" placeholder="Фамилия" class="w-1/2" />

@@ -1,5 +1,7 @@
 <script setup>
 import PaginationComponent from "./PaginationComponent.vue";
+
+import SortIcon from "@/assets/icons/Sorting_icon.svg";
 import ProductCard from "@/components/product/ProductCard.vue";
 </script>
 <template>
@@ -15,9 +17,9 @@ import ProductCard from "@/components/product/ProductCard.vue";
           <div class="w-61 flex flex-col justify-center items-stretch gap-3">
             <div
               :class="[
-                ' pt-3 border-t border-solid border-[#e5e5e5]',
+                'pt-3 border-t border-solid border-[#e5e5e5]',
                 current === item.name ? 'selected' : '',
-                index == 0 ? 'top' : '',
+                index == 0 ? 'border-t border-solid border-[#e5e5e5]' : '',
               ]"
               v-for="(item, index) in links"
               :key="index"
@@ -30,12 +32,18 @@ import ProductCard from "@/components/product/ProductCard.vue";
           </div>
         </nav>
         <div
-          class="lg:w-3/4 w-full flex flex-col items-center justify-center lg:justify-start"
+          class="lg:w-3/4 w-full flex flex-col items-center justify-center lg:justify-start gap-7"
         >
-          <select name="" id="">
-            <option value="">по популярности</option>
-            <option value="">по цене</option>
-          </select>
+          <div class="w-full flex items-center justify-start gap-3">
+            <label for="sort" class="flex items-center justify-center">
+              <img class="" :src="SortIcon" alt="" />
+              Сортировка:
+            </label>
+            <select class="text-[#026D4E]" name="" id="sort">
+              <option class="text-black" value="">по популярности</option>
+              <option class="text-black" value="">по цене</option>
+            </select>
+          </div>
           <div
             class="flex flex-wrap gap-8 justify-center lg:justify-start items-center"
           >
@@ -91,14 +99,13 @@ export default {
       this.currentPage = newPage;
       this.currentProducts = this.products[this.currentPage];
       this.currentPages = [];
-      if (this.currentPage + 4 < this.products.length){
+      if (this.currentPage + 4 < this.products.length) {
         for (let i = this.currentPage + 1; i < this.currentPage + 5; i++) {
           this.currentPages.push(i);
         }
-      }
-      else{
-        for(let i = this.products.length; i > this.products.length - 4; i--){
-          this.currentPages.push(i)
+      } else {
+        for (let i = this.products.length; i > this.products.length - 4; i--) {
+          this.currentPages.push(i);
         }
         this.currentPages = this.currentPages.reverse();
       }

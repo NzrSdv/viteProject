@@ -1,5 +1,6 @@
 <script setup>
 import PurchaseInputsComponent from "@/components/purchase/purchaseInputsComponent.vue";
+import PurchaseCompletedWindow from "../UI/PurchaseCompletedWindow.vue";
 import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
@@ -12,13 +13,13 @@ const product = computed(() => store.getters.getProductById(route.params.id));
   <main class="main">
     <section class="section--gap">
       <div class="container">
-        <div class="flex flex-row w-full gap-7 items-start">
-          <div class="left flex flex-col gap-8 w-2/3">
+        <div class="flex lg:flex-row flex-col-reverse w-full gap-7 items-start">
+          <div class="left flex flex-col gap-8 lg:w-2/3 w-full">
             <h2 class="section--title">Покупатель и регион</h2>
             <PurchaseInputsComponent />
           </div>
           <div
-            class="right flex flex-col gap-11 py-4 px-7 pb-11 border border-solid border-light-44 w-1/3 rounded-lg"
+            class=" w-full lg:w-1/3 right flex flex-col gap-11 py-4 px-7 pb-11 border border-solid border-light-44  rounded-lg"
           >
             <div class="flex flex-row justify-between items-center">
               <h4 class="font-[Raleway] font-bold text-xs/5 text-dark-1">
@@ -47,7 +48,7 @@ const product = computed(() => store.getters.getProductById(route.params.id));
                   <h5
                     class="font-[Plus_Jakarta_Sans] font-bold text-base/5 text-dark-1"
                   >
-                    {{ product.price.currentPrice.value }}
+                    {{ product.currentPrice }}₸
                   </h5>
                 </div>
               </div>
@@ -61,7 +62,7 @@ const product = computed(() => store.getters.getProductById(route.params.id));
                   <h5
                     class="font-[Plus_Jakarta_Sans] font-medium text-base/5 text-dark-1 opacity-50"
                   >
-                    {{ product.price.currentPrice.value }}
+                    {{ product.currentPrice / 5 }}₸
                   </h5>
                 </div>
               </div>
@@ -77,7 +78,7 @@ const product = computed(() => store.getters.getProductById(route.params.id));
                   <h5
                     class="font-[Plus_Jakarta_Sans] font-medium text-base/5 text-dark-1 opacity-50"
                   >
-                    3000₸
+                    {{ product.currentPrice / 5 }}₸
                   </h5>
                 </div>
               </div>
@@ -91,7 +92,7 @@ const product = computed(() => store.getters.getProductById(route.params.id));
                   <h5
                     class="font-[Plus_Jakarta_Sans] font-bold text-base/5 text-dark-1"
                   >
-                    {{ product.price.currentPrice.value }}
+                    {{ product.currentPrice }}₸
                   </h5>
                 </div>
               </div>
@@ -99,9 +100,7 @@ const product = computed(() => store.getters.getProductById(route.params.id));
                 text="Купить"
                 @click="
                   () => {
-                    store.commit('buyProduct',product);
-                    store.commit('removeCart', product.id);
-                    $router.push('/cart');
+                    purchased = true;
                   }
                 "
               />
@@ -110,11 +109,26 @@ const product = computed(() => store.getters.getProductById(route.params.id));
         </div>
       </div>
     </section>
+    <PurchaseCompletedWindow
+      :clicked="
+        () => {
+          store.commit('buyProduct', product);
+          store.commit('removeCart', product.id);
+          $router.push('/cart');
+        }
+      "
+      v-if="purchased"
+    />
   </main>
 </template>
 <script>
 export default {
   components: { PurchaseInputsComponent, AccentButton },
+  data() {
+    return {
+      purchased: false,
+    };
+  },
 };
 </script>
 <style></style>

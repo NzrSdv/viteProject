@@ -31,7 +31,7 @@ import SecondImg from "@/assets/photos/Chair2_photo.png";
               <h2 class="max-w-50 font-bold text-5xl/14">Осенние скидки</h2>
               <h4 class="font-normal text-2xl/8">На распашные шкафы</h4>
             </div>
-            <InverseGradientButton text="Подробнее" />
+            <InverseGradientButton text="Подробнее" @click="() => {$router.push('/catalog/Шкафы (распашные)')}"/>
           </div>
         </div>
         <div

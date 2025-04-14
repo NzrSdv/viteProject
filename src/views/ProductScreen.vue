@@ -4,7 +4,10 @@ import AccentButton from "../UI/AccentButton.vue";
 import AccentButtonTwo from "../UI/AccentButtonTwo.vue";
 import ProductsRow from "../components/product/ProductsRow.vue";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 const store = useStore();
+
+const router = useRouter();
 </script>
 
 <template>
@@ -40,8 +43,10 @@ const store = useStore();
                 <h5 class="sub-title">Код Товара: {{ product.code }}</h5>
               </div>
               <div class="flex flex-col gap-5">
-                <h3 class="price">{{ product.price.currentPrice.value }}</h3>
-                <h4 class="oldPrice">{{ product.price.oldPrice?.value }}</h4>
+                <h3 class="price">{{ product.currentPrice }}</h3>
+                <h4 v-if="product.oldPrice != 0" class="oldPrice">
+                  {{ product?.oldPrice }}
+                </h4>
                 <div class="flex flex-row gap-6">
                   <AccentButton
                     text="В корзину"
@@ -49,7 +54,15 @@ const store = useStore();
                       () => store.commit('addCart', { ...product, quantity: 1 })
                     "
                   />
-                  <AccentButtonTwo text="Купить в 1 клик" />
+                  <AccentButtonTwo
+                    text="Купить в 1 клик"
+                    @click="
+                      () => {
+                        store.commit('addCart', { ...product, quantity: 1 })
+                        router.push(`/order/${product.id}`);
+                      }
+                    "
+                  />
                 </div>
               </div>
             </div>

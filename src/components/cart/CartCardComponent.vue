@@ -26,13 +26,13 @@ const store = useStore();
               Код Товара: {{ cartProduct.code }}
             </h5>
             <h3 class="font-[Inter] font-normal text-normal/5">
-              {{ cartProduct.price.currentPrice.value }}
+              {{ cartProduct.currentPrice }}
             </h3>
             <h4
-              v-if="cartProduct.price.oldPrice != undefined"
+              v-if="cartProduct.oldPrice != 0"
               class="line-through text-light-5 font-[Inter] text-[10px]"
             >
-              {{ cartProduct.price.oldPrice?.value }}
+              {{ cartProduct.oldPrice }}
             </h4>
           </div>
           <router-link :to="`/order/${cartProduct.id}`">
