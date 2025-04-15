@@ -3,7 +3,7 @@ import DiscountMarker from "@/UI/DiscountMarker.vue";
 import NewMarker from "@/UI/NewMarker.vue";
 </script>
 <template>
-  <router-link :to="`/product/${product.id}`">
+  <router-link v-if="product.name != ''" :to="`/product/${product.id}`">
     <div
       class="card w-[232px] h-[312px] md:w-[290px] md:h-[390px] rounded flex flex-col justify-start items-start gap-6"
     >

@@ -1,22 +1,42 @@
 <script setup>
-import madeProducts from "../business/products";
 import AccentButton from "../UI/AccentButton.vue";
 import AccentButtonTwo from "../UI/AccentButtonTwo.vue";
 import ProductsRow from "../components/product/ProductsRow.vue";
 import { useStore } from "vuex";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import AccordionBase from "../UI/accordion/AccordionBase.vue";
+import { computed } from "vue";
+import { watch } from "vue";
 const store = useStore();
 
+const route = useRoute();
 const router = useRouter();
+
+const products = computed(() => store.state.products);
+console.log(products);
+// const product = computed(
+//   () => products.filter((element, index) => index == route.params.id - 1)[0]
+// );
+const product = computed(() => store.getters.getOneProduct(route.params.id));
+
+watch(() => {
+  route.params.id,
+    (newId) => {
+      product = computed(() => store.getters.getOneProduct(newId));
+    };
+});
 </script>
 
 <template>
   <main class="main">
     <section class="section--gap px-2">
       <div class="flex flex-column items-center justify-center">
-        <div class="flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-40">
-          <div class="w-full px-2 md:w-lg grid gap-4 grid-cols-4 grid-rows-5 row-span-1">
+        <div
+          class="flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-40"
+        >
+          <div
+            class="w-full px-2 md:w-lg grid gap-4 grid-cols-4 grid-rows-5 row-span-1"
+          >
             <div
               class="border-2 border-solid border-blue-500 col-span-4 row-span-4"
             >
@@ -38,7 +58,7 @@ const router = useRouter();
             </div>
           </div>
           <div class="flex flex-col justify-start gap-13 max-w-md pt-9">
-            <div class="flex flex-col lg:text-start text-center  gap-9">
+            <div class="flex flex-col lg:text-start text-center gap-9">
               <div class="flex flex-col gap-4">
                 <h1 class="title">{{ product.name }}</h1>
                 <h5 class="sub-title">Код Товара: {{ product.code }}</h5>
@@ -48,7 +68,9 @@ const router = useRouter();
                 <h4 v-if="product.oldPrice != 0" class="oldPrice">
                   {{ product?.oldPrice }}₸
                 </h4>
-                <div class="w-full flex flex-row items-center justify-between gap-6">
+                <div
+                  class="w-full flex flex-row items-center justify-between gap-6"
+                >
                   <AccentButton
                     text="В корзину"
                     @click="
@@ -59,7 +81,7 @@ const router = useRouter();
                     text="Купить в 1 клик"
                     @click="
                       () => {
-                        store.commit('addCart', { ...product, quantity: 1 })
+                        store.commit('addCart', { ...product, quantity: 1 });
                         router.push(`/order/${product.id}`);
                       }
                     "
@@ -89,8 +111,13 @@ const router = useRouter();
           <div class="h-[1px] w-full bg-light-4"></div>
         </h2>
         <div class="w-full">
-          <div class="border border-solid border-[#EAEAEA] rounded-3xl py-12 px-15">
-            <AccordionBase :titles="['Характеристики','Оплата','Доставка','Гарантии']" :extraInfo="product.characteristics"/>
+          <div
+            class="border border-solid border-[#EAEAEA] rounded-3xl py-12 px-15"
+          >
+            <AccordionBase
+              :titles="['Характеристики', 'Оплата', 'Доставка', 'Гарантии']"
+              :extraInfo="product.characteristics"
+            />
           </div>
         </div>
       </div>
@@ -100,12 +127,12 @@ const router = useRouter();
         <ProductsRow
           line="true"
           title="Похожие товары"
-          :products="madeProducts[0].slice(0, 4)"
+          :products="products.slice(0, 4)"
         />
         <ProductsRow
           line="true"
           title="Вы смотрели"
-          :products="madeProducts[0].slice(0, 4)"
+          :products="products.slice(0, 4)"
         />
       </div>
     </section>
@@ -114,31 +141,22 @@ const router = useRouter();
 <script>
 export default {
   components: { AccentButton, AccentButtonTwo, ProductsRow },
-  data() {
-    return {
-      product: {},
-    };
-  },
-  created() {
-    this.product = madeProducts
-      .flat()
-      .filter((element, index) => index == this.$route.params.id - 1)[0];
-    console.log(
-      madeProducts
-        .flat()
-        .filter((element, index) => index == this.$route.params.id - 1)
-    );
-  },
-  updated() {
-    this.product = madeProducts
-      .flat()
-      .filter((element, index) => index == this.$route.params.id - 1)[0];
-    console.log(
-      madeProducts
-        .flat()
-        .filter((element, index) => index == this.$route.params.id - 1)
-    );
-  },
+  // data() {
+  //   return {};
+  // },
+  // mounted() {
+  //   product = products.filter(
+  //     (item, index) => item.id == this.$route.params.id
+  //   )[0];
+  // },
+  // updated() {
+  //   product = products.filter(
+  //     (element, index) => index == this.$route.params.id - 1
+  //   )[0];
+  //   console.log(
+  //     products.filter((element, index) => index == this.$route.params.id - 1)
+  //   );
+  // },
 };
 </script>
 <style scoped>

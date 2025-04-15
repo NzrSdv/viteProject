@@ -1,4 +1,10 @@
-<script setup></script>
+<script setup>
+import { computed } from "vue";
+import { useStore } from "vuex";
+const store = useStore();
+const currentPage = computed(() => store.state.currentPage);
+const currentPages = computed(() => store.state.currentPages);
+</script>
 <template>
   <div class="flex items-center h-10 justify-center gap-6">
     <div
@@ -15,10 +21,10 @@
     </div>
     <div class="numberPages">
       <div
-        :class="['pageButton', currentPage === item-1 ? 'active' : '']"
+        :class="['pageButton', currentPage === item - 1 ? 'active' : '']"
         v-for="(item, index) in currentPages"
         :key="index"
-        @click="$emit('pageChange', item-1)"
+        @click="$emit('pageChange', item - 1)"
       >
         {{ item }}
       </div>
@@ -27,7 +33,9 @@
       class="w-17 h-full flex justify-center items-center border border-solid border-[#bcbcbc] rounded-md"
       @click="
         () => {
-          if (currentPage < pages - 1) {
+          console.log(currentPage)
+          console.log(pages);
+          if (currentPage < (pages - 1)) {
             $emit('pageChange', currentPage + 1);
           }
         }
@@ -43,7 +51,11 @@ export default {
   props: {
     pages: Number,
     currentPage: Number,
-    currentPages:Array
+    currentPages: Array,
+  },
+  created() {
+    console.log(this.currentPage);
+    console.log(this.pages);
   },
 };
 </script>

@@ -1,6 +1,13 @@
 <script setup>
 import HeaderComponent from "./components/header/HeaderComponent.vue";
 import FooterComponent from "./components/footer/FooterComponent.vue";
+import { useStore } from "vuex";
+// import { useStore } from "vuex";
+// import { computed } from "vue";
+// const store = useStore();
+// store.dispatch('fetchProducts')
+// const products = computed(() => store.getters.getProducts())
+// console.log(products);
 </script>
 
 <template>
@@ -13,11 +20,27 @@ import FooterComponent from "./components/footer/FooterComponent.vue";
   <FooterComponent />
 </template>
 
-<script></script>
+<script>
+export default {
+  computed: {
+    showProducts() {
+      console.log(this.$store.getters("getProducts"));
+    },
+  },
+  methods: {
+    load() {
+      this.$store.dispatch("fetchProducts");
+    },
+  },
+  created() {
+    this.load();
+  },
+};
+</script>
 <style>
 .slide-enter-active,
-.slide-leave-active{
-  transition: all .4s;
+.slide-leave-active {
+  transition: all 0.4s;
 }
 .slide-enter-from,
 .slide-leave-to {

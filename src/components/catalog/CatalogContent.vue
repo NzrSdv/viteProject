@@ -3,6 +3,49 @@ import PaginationComponent from "./PaginationComponent.vue";
 
 import SortIcon from "@/assets/icons/Sorting_icon.svg";
 import ProductCard from "@/components/product/ProductCard.vue";
+import { watch, computed, ref } from "vue";
+import { useRoute } from "vue-router";
+import { useStore } from "vuex";
+
+const route = useRoute();
+
+const store = useStore();
+
+const sortedProducts = computed(() => store.state.sortedProducts);
+
+const products = computed(() => store.state.products);
+const currentPage = computed(() => store.state.currentPage);
+const currentPages = computed(() => store.state.currentPages);
+
+const currentProducts = computed(() => store.state.currentProducts);
+const currentCategory = computed(() => store.state.currentCategory);
+
+const categories = computed(() => store.state.categories);
+
+const sortingKey = ref("id");
+watch(sortingKey, (newKey, oldKey) => {
+  store.commit("sortCurrentProducts", newKey);
+});
+
+watch(
+  () => route.params.category,
+  (newCategory, oldCategory) => {
+    store.commit(
+      "forwardCategory",
+      newCategory.length === 1
+        ? newCategory[0]
+        : newCategory.length === 2
+        ? newCategory.join("/")
+        : newCategory
+    );
+  }
+);
+
+function forwardPage(newPage) {
+  store.commit("forwardPage", newPage);
+}
+
+console.log(products);
 </script>
 <template>
   <section class="section--gap">
@@ -21,28 +64,31 @@ import ProductCard from "@/components/product/ProductCard.vue";
               }
             "
           >
-            Category : <span class="text-[#026D4E]">{{ this.current }}</span>
+            Category : <span class="text-[#026D4E]">{{ currentCategory }}</span>
           </button>
         </div>
         <nav
           class="w-1/4 border border-solid border-[#e5e5e5] rounded-xl hidden lg:flex flex-col items-stretch px-6 pt-6 pb-9 justify-stretch"
         >
           <h4 class="sub--title">Категория</h4>
-          <div class="w-61 flex flex-col justify-center items-stretch gap-3">
-            <div
-              :class="[
-                'pt-3 border-t border-solid border-[#e5e5e5]',
-                current === item.name ? 'selected' : '',
-                index == 0 ? 'border-t border-solid border-[#e5e5e5]' : '',
-              ]"
-              v-for="(item, index) in links"
+          <div
+            class="links xl:w-61 flex flex-col justify-center items-stretch gap-3"
+          >
+            <router-link
+              v-for="(item, index) in categories"
               :key="index"
+              :to="{ name: 'Catalog', params: { category: item.name } }"
             >
-              <router-link
-                :to="{ name: 'Catalog', params: { category: item.name } }"
-                >{{ item.name }}</router-link
+              <div
+                :class="[
+                  'link pt-3 border-t border-solid border-[#e5e5e5]',
+                  currentCategory === item.name ? 'selected' : '',
+                  index == 0 ? 'border-t border-solid border-[#e5e5e5]' : '',
+                ]"
               >
-            </div>
+                {{ item.name }}
+              </div>
+            </router-link>
           </div>
         </nav>
         <div
@@ -59,9 +105,17 @@ import ProductCard from "@/components/product/ProductCard.vue";
               class="text-[#026D4E] underlined decoration-"
               name=""
               id="sort"
+              v-model="sortingKey"
             >
-              <option class="text-black" value="">по популярности</option>
-              <option class="text-black" value="">по цене</option>
+              <option class="text-black" value="id">по популярности</option>
+              <option class="text-black" value="currentPrice">по цене</option>
+              <option class="text-black" value="name">по названию</option>
+
+              <option class="text-black" value="discountProduct">по скидке</option>
+              <option class="text-black" value="classification">по классу</option>
+              <option class="text-black" value="newProduct">по новизне</option>
+
+            
             </select>
           </div>
           <div
@@ -74,8 +128,8 @@ import ProductCard from "@/components/product/ProductCard.vue";
             />
           </div>
           <PaginationComponent
-            @pageChange="pageClick"
-            :pages="products.length"
+            @pageChange="forwardPage"
+            :pages="Math.ceil(products.length / 15)"
             :currentPage="currentPage"
             :currentPages="currentPages"
           />
@@ -95,21 +149,20 @@ import ProductCard from "@/components/product/ProductCard.vue";
         class="bg-white absolute left-0 top-0 bottom-0 flex flex-col items-center justify-start pt-5"
       >
         <ul>
-          <li
-            class="py-2 px-8 border-b border-b-solid border-[#e5e5e5]"
-            v-for="(link, index) in links"
+          <router-link
+            v-for="(item, index) in categories"
             :key="index"
             @click="
               () => {
                 responsiveCategory = false;
               }
             "
+            :to="{ name: 'Catalog', params: { category: item.name } }"
           >
-            <router-link
-              :to="{ name: 'Catalog', params: { category: link.name } }"
-              >{{ link.name }}</router-link
-            >
-          </li>
+            <li class="py-2 px-8 border-b border-b-solid border-[#e5e5e5]">
+              {{ item.name }}
+            </li>
+          </router-link>
           <li
             class="py-2 px-4 text-center text-red-600 text-2xl/10"
             @click="
@@ -126,74 +179,29 @@ import ProductCard from "@/components/product/ProductCard.vue";
   </section>
 </template>
 <script>
-import madeProducts from "@/business/products";
-
 export default {
   name: "CatalogContent",
   components: { ProductCard, PaginationComponent },
+
   data() {
     return {
-      products: madeProducts,
-      currentPage: 0,
-      currentPages: [1, 2, 3, 4],
-      currentProducts: [],
-      links: [
-        { name: "Шкафы (МДФ)" },
-        { name: "Шкафы (распашные)" },
-        { name: "Шкафы (купе)" },
-        { name: "Спальные гарнитуры" },
-        { name: "Кровати" },
-        { name: "Диваны" },
-        { name: "Пуфики" },
-        { name: "Кухонные гарнитуры" },
-        { name: "Столы" },
-        { name: "Прихожие" },
-        { name: "Комоды" },
-        { name: "Стеллажи" },
-        { name: "Б/У" },
-      ],
-      current: "",
+      // currentPage: 0,
+      // currentPages: [1, 2, 3, 4],
+      // currentProducts: [],
+      // current: "",
       responsiveCategory: false,
     };
   },
-  methods: {
-    pageClick(newPage) {
-      this.currentPage = newPage;
-      this.currentProducts = this.products[this.currentPage];
-      this.currentPages = [];
-      if (this.currentPage + 4 < this.products.length) {
-        for (let i = this.currentPage + 1; i < this.currentPage + 5; i++) {
-          this.currentPages.push(i);
-        }
-      } else {
-        for (let i = this.products.length; i > this.products.length - 4; i--) {
-          this.currentPages.push(i);
-        }
-        this.currentPages = this.currentPages.reverse();
-      }
-    },
-  },
+
+  methods: {},
   created() {
-    // current page
-    this.currentProducts = this.products[this.currentPage];
-
+    //   // current page
+    //   this.currentProducts = products;
     // current category
-    this.current =
-      this.$route.params.category.length === 1
-        ? this.$route.params.category[0]
-        : this.$route.params.category;
-
-    this.$watch(
-      () => this.$route.params.category,
-      (newCategory, oldCategory) => {
-        this.current =
-          newCategory.length === 1
-            ? newCategory[0]
-            : newCategory.length === 2
-            ? newCategory.join("/")
-            : newCategory;
-      }
-    );
+    // currentCategory =
+    //   this.$route.params.category.length === 1
+    //     ? this.$route.params.category[0]
+    //     : this.$route.params.category;
   },
 };
 </script>
